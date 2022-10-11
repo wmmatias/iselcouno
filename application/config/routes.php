@@ -52,3 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'clients';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+$route['users/signin'] = 'users/process_signin';
+$route['users/signoff'] = 'users/logoff';
+$route['users/application'] = 'users/process_application';

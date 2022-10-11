@@ -3,35 +3,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Model {
 
-    /*  DOCU: This function retrieves user information filtered by email.
-        Owner: Wilard
-    */
     function get_user_by_email($email)
     { 
         $query = "SELECT * FROM users WHERE email=?";
         return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
     }
 
-    /*  DOCU: This function inserts new user info upon registration.
-        Owner: Wilard
-    */
-    function create_user($user)
+    function check_mail($email)
+    { 
+        $query = "SELECT email FROM users WHERE email=?";
+        return $this->db->query($query, $this->security->xss_clean($email))->result_array();
+    }
+
+    function create_user($user,$id)
     {
-        $query = "INSERT INTO Users (first_name, last_name, email, password,created_at,updated_at) VALUES (?,?,?,?,?,?)";
+        $id = $id;
+        $user_level = '1';
+        $status = '0';
+        $password = 'Iselco@2022';
+
+        $query = "INSERT INTO users (application_id, first_name, last_name, phone, email, password, user_level, status, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?)";
         $values = array(
-            $this->security->xss_clean($user['first_name']), 
-            $this->security->xss_clean($user['last_name']), 
+            $id,
+            $this->security->xss_clean($user['firstname']), 
+            $this->security->xss_clean($user['lastname']), 
+            $this->security->xss_clean($user['phone']), 
             $this->security->xss_clean($user['email']), 
-            md5($this->security->xss_clean($user["password"])),
+            md5($this->security->xss_clean($password)),
+            $this->security->xss_clean($user_level), 
+            $this->security->xss_clean($status), 
             $this->security->xss_clean(date("Y-m-d, H:i:s")),
-            $this->security->xss_clean(date("Y-m-d, H:i:s"))); 
+            $this->security->xss_clean(date("Y-m-d, H:i:s"))
+        ); 
         
         return $this->db->query($query, $values);
     }
 
-    /*  DOCU: This function checks if all required fields were filled up.
-        Owner: Wilard
-    */
     function validate_signin_form() {
         $this->form_validation->set_error_delimiters('<div>','</div>');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
@@ -45,9 +52,6 @@ class User extends CI_Model {
         }
     }
     
-    /*  DOCU: This function contains simple condition to match database record and user input in password.
-        Owner: Wilard
-    */
     function validate_signin_match($user, $password) 
     {
         $hash_password = md5($this->security->xss_clean($password));
@@ -61,42 +65,16 @@ class User extends CI_Model {
     }
     function validate_is_admin($email) 
     {
-        $query = "SELECT is_admin FROM users WHERE email=? and is_admin = 0";
+        $query = "SELECT user_level FROM users WHERE email=? and user_level = 0";
         return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
     }
 
-    /*  DOCU: This function checks required input fields and if unique email.
-        Owner: Wilard
-    */
-    function validate_registration($email) 
-    {
-        $this->form_validation->set_error_delimiters('<div>','</div>');
-        $this->form_validation->set_rules('first_name', 'First Name', 'required|alpha');
-        $this->form_validation->set_rules('last_name', 'Last Name', 'required|alpha');   
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');        
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');
-        $this->form_validation->set_rules('Confirm_password', 'Confirm Password', 'required|matches[password]');
-        
-        if(!$this->form_validation->run()) {
-            return validation_errors();
-        }
-        else if($this->get_user_by_email($email)) {
-            return "Email already taken.";
-        }
-    }
-
-    /*  DOCU: This function return details of current user.
-        Owner: Wilard
-    */
     function get_user_id($id)
     {
         $query = "SELECT * FROM users WHERE id=?";
         return $this->db->query($query, $this->security->xss_clean($id))->result_array()[0];
     }
 
-    /*  DOCU: This function checks required input fields in modifying information.
-        Owner: Wilard
-    */
     function validate_information() 
     {
         $this->form_validation->set_error_delimiters('<div>','</div>');
@@ -112,9 +90,6 @@ class User extends CI_Model {
         }
     }
 
-     /*  DOCU: This function is updating the user information after validation.
-        Owner: Wilard
-    */
     function update_userinformation($form_data) 
     {
         return $this->db->query("UPDATE users SET first_name = ?, last_name = ?, email = ?, updated_at = ? WHERE id = ?", 
@@ -126,9 +101,6 @@ class User extends CI_Model {
             $this->security->xss_clean($form_data['id'])));
     }
 
-    /*  DOCU: This function checks required input fields in modifying credentials.
-        Owner: Wilard
-    */
     function validate_change_password($password = NULL) 
     {
         $this->form_validation->set_error_delimiters('<div>','</div>');
@@ -144,9 +116,6 @@ class User extends CI_Model {
         }
     }
 
-    /*  DOCU: This function is for checking of inputed old password and stored password to database.
-       Owner: Wilard
-   */
     function check_password($password){
          return $this->db->query("SELECT password FROM users WHERE id=? and password = ?", 
         array(
@@ -154,9 +123,6 @@ class User extends CI_Model {
             md5($this->security->xss_clean($password['old_password']))))->row_array(); 
     }
 
-    /*  DOCU: This function is for updating credentials.
-        Owner: Wilard
-    */
     function update_credentials($form_data) 
     {
         return $this->db->query("UPDATE users SET password = ?, updated_at = ? WHERE id = ?", 
