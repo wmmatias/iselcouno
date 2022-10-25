@@ -57,3 +57,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['users/signin'] = 'users/process_signin';
 $route['users/signoff'] = 'users/logoff';
 $route['users/application'] = 'users/process_application';
+
+$route['users/verify/(:any)'] = 'users/verify/$1';

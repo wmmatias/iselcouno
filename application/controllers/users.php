@@ -22,25 +22,33 @@ class Users extends CI_Controller {
             $email = $this->input->post('email');
             $user = $this->user->get_user_by_email($email);
             $fullname = $user['first_name'] . ' ' . $user['last_name'];
-            $result = $this->user->validate_signin_match($user, $this->input->post('password'));
-            
-            if($result == "success") 
-            {   
-                $is_admin = $this->user->validate_is_admin($email);
-                if(!empty($is_admin)){
-                    $this->session->set_flashdata('success', '<strong>Successfully!</strong> logged in!');
-                    $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname, 'auth' => true));
+
+            $verified = $this->user->is_verified($email);
+            if(!empty($verified)){
+                $result = $this->user->validate_signin_match($user, $this->input->post('password'));
+                if($result == "success") 
+                {   
+                    $is_admin = $this->user->validate_is_admin($email);
+                    if(!empty($is_admin)){
+                        $this->session->set_flashdata('success', '<strong>Successfully!</strong> logged in!');
+                        $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname, 'auth' => true));
+                        redirect("admin");
+                    }
+                    else{
+                        $this->session->set_flashdata('success', '<strong>Successfully!</strong> logged in!');
+                        $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname,));
+                        redirect("/");
+                    }
+                }
+                else 
+                {
+                    $this->session->set_flashdata('input_errors', $result);
                     redirect("/");
                 }
-                else{
-                    $this->session->set_flashdata('success', '<strong>Successfully!</strong> logged in!');
-                    $this->session->set_userdata(array('user_id'=>$user['id']));
-                    redirect("/");
-                }
+
             }
-            else 
-            {
-                $this->session->set_flashdata('input_errors', $result);
+            else{
+                $this->session->set_flashdata('input_errors', 'Please verify your email then');
                 redirect("/");
             }
         }
@@ -62,37 +70,33 @@ class Users extends CI_Controller {
         {
             $form_data = $this->input->post();
             $exist = $this->application->get_application_id( $form_data);
-            if (!$exist){
-                $check_email = $this->user->check_mail($form_data['email']);
-                if(!$check_email){
-                    $this->application->create_new($form_data);
-                    $id = $this->application->get_application_id($form_data);
-                    $this->user->create_user($form_data, $id);
-
-                    $this->email->creation_email($form_data);
-                    
-                    $this->session->set_flashdata('success', 'Your request has been process! check your <a href="https://mail.google.com/mail/u/0/#inbox">email</a> to validate your account');
-                    $this->load->view('templates/header');
-                    $this->load->view('client/index');
-                    $this->load->view('templates/footer');
-                }
-                else{
-                    $this->session->set_flashdata('form_error', 'Email already used!');
-                    $this->load->view('templates/header');
-                    $this->load->view('client/index');
-                    $this->load->view('templates/footer');
-                }
-            }
-            else{
-                $this->session->set_flashdata('form_error', 'The address provided is already have an account please use it!');
+            
+            $check_email = $this->user->check_mail($form_data['email']);
+            if(!$check_email){
+                $this->application->create_new($form_data);
+                $id = $this->application->get_application_id($form_data);
+                $this->user->create_user($form_data, $id);
+                
+                $this->session->set_flashdata('success', 'Your request has been process! check your <a href="https://mail.google.com/mail/u/0/#inbox">email</a> to validate your account');
                 $this->load->view('templates/header');
                 $this->load->view('client/index');
                 $this->load->view('templates/footer');
             }
-           
+            else{
+                $this->session->set_flashdata('form_error', 'Email already used!');
+                $this->load->view('templates/header');
+                $this->load->view('client/index');
+                $this->load->view('templates/footer');
+            }
         }
     }
 
+    public function verify($vkey) 
+    {   
+        $result = $this->user->verify($vkey);
+        $this->session->set_flashdata('success', 'your email has been verified use the credential in your email to loged in!');
+        redirect('/');
+    }
     
     
     

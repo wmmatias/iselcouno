@@ -15,14 +15,21 @@ class User extends CI_Model {
         return $this->db->query($query, $this->security->xss_clean($email))->result_array();
     }
 
+    function is_verified($email)
+    { 
+        $query = "SELECT status FROM users WHERE email=? and status = '1'";
+        return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
+    }
+
     function create_user($user,$id)
     {
         $id = $id;
         $user_level = '1';
         $status = '0';
         $password = 'Iselco@2022';
+        $vkey = md5(time().$user['firstname']);
 
-        $query = "INSERT INTO users (application_id, first_name, last_name, phone, email, password, user_level, status, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO users (application_id, first_name, last_name, phone, email, password, user_level, vkey, status, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         $values = array(
             $id,
             $this->security->xss_clean($user['firstname']), 
@@ -31,11 +38,12 @@ class User extends CI_Model {
             $this->security->xss_clean($user['email']), 
             md5($this->security->xss_clean($password)),
             $this->security->xss_clean($user_level), 
+            $this->security->xss_clean($vkey), 
             $this->security->xss_clean($status), 
             $this->security->xss_clean(date("Y-m-d, H:i:s")),
             $this->security->xss_clean(date("Y-m-d, H:i:s"))
         ); 
-        
+        $this->email->creation_email($user, $vkey);
         return $this->db->query($query, $values);
     }
 
@@ -65,7 +73,7 @@ class User extends CI_Model {
     }
     function validate_is_admin($email) 
     {
-        $query = "SELECT user_level FROM users WHERE email=? and user_level = 0";
+        $query = "SELECT user_level FROM users WHERE email=? and user_level = '0'";
         return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
     }
 
@@ -130,6 +138,19 @@ class User extends CI_Model {
             md5($this->security->xss_clean($form_data['password'])), 
             $this->security->xss_clean(date("Y-m-d, H:i:s")),
             $this->security->xss_clean($form_data['id'])));
+    }
+
+    
+    function verify($vkey) 
+    {
+        $status = '1';
+        return $this->db->query("UPDATE users SET status = ?, updated_at = ? WHERE vkey = ?", 
+        array(
+            $this->security->xss_clean($status), 
+            $this->security->xss_clean(date("Y-m-d, H:i:s")),
+            $this->security->xss_clean($vkey),
+            
+        ));
     }
 }
 
