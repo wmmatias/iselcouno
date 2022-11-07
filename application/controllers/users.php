@@ -22,6 +22,7 @@ class Users extends CI_Controller {
             $email = $this->input->post('email');
             $user = $this->user->get_user_by_email($email);
             $fullname = $user['first_name'] . ' ' . $user['last_name'];
+            $status = $user['status'];
 
             $verified = $this->user->is_verified($email);
             if(!empty($verified)){
@@ -31,13 +32,13 @@ class Users extends CI_Controller {
                     $is_admin = $this->user->validate_is_admin($email);
                     if(!empty($is_admin)){
                         $this->session->set_flashdata('success', '<strong>Successfully!</strong> logged in!');
-                        $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname, 'auth' => true));
-                        redirect("admin");
+                        $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname, 'status'=> $status, 'auth' => true));
+                        redirect("dashboards");
                     }
                     else{
                         $this->session->set_flashdata('success', '<strong>Successfully!</strong> logged in!');
-                        $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname,));
-                        redirect("/");
+                        $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname, 'status'=> $status));
+                        redirect("clients/client");
                     }
                 }
                 else 
@@ -69,14 +70,15 @@ class Users extends CI_Controller {
         else
         {
             $form_data = $this->input->post();
-            $exist = $this->application->get_application_id( $form_data);
+            // $exist = $this->application->get_application_id( $form_data);
             
-            $check_email = $this->user->check_mail($form_data['email']);
+            $check_email = $this->user->check_mail($form_data);
             if(!$check_email){
-                $this->application->create_new($form_data);
-                $id = $this->application->get_application_id($form_data);
-                $this->user->create_user($form_data, $id);
-                
+                $this->user->create_user_applicant($form_data);
+                $id = $this->user->get_user_applicant($form_data);
+                $this->application->create_new($form_data, $id);
+                $app_id = $this->client->get_application($id);
+                $this->client->first_timeline($app_id);
                 $this->session->set_flashdata('success', 'Your request has been process! check your <a href="https://mail.google.com/mail/u/0/#inbox">email</a> to validate your account');
                 $this->load->view('templates/header');
                 $this->load->view('client/index');
@@ -98,6 +100,42 @@ class Users extends CI_Controller {
         redirect('/');
     }
     
-    
+    public function users_modification()
+    {   
+        $form_data = $this->input->post();
+        $res = $this->user->checkrules();
+        if($res !== 'success'){
+            $this->session->set_flashdata('input_errors', $res);
+            $res = $this->dashboard->get_info($this->session->userdata('user_id'));
+            $data = array ('data' => $res);
+            $this->load->view("partials/profile", $data);
+        }
+        else{
+            $this->session->set_flashdata('success', 'Successfully Update!');
+            $this->user->update_user_details($form_data);
+            $res = $this->dashboard->get_info($this->session->userdata('user_id'));
+            $data = array ('data' => $res);
+            $this->load->view("partials/profile", $data);
+        }
+    }
+
+    public function credentials_modification()
+    {   
+        $form_data = $this->input->post();
+        $res = $this->user->validate_change_password($form_data);
+        if(!empty($res)){
+            $this->session->set_flashdata('input_errors', $res);
+            $res = $this->dashboard->get_info($this->session->userdata('user_id'));
+            $data = array ('data' => $res);
+            $this->load->view("partials/profile", $data);
+        }
+        else{
+            $this->user->update_credentials($form_data);
+            $this->session->set_flashdata('success', 'Successfully Update!');
+            $res = $this->dashboard->get_info($this->session->userdata('user_id'));
+            $data = array ('data' => $res);
+            $this->load->view("partials/profile", $data);
+        }
+    }
     
 }

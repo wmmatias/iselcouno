@@ -3,41 +3,72 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Model {
 
-    function get_user_by_email($email)
+    public function get_user_by_email($email)
     { 
         $query = "SELECT * FROM users WHERE email=?";
         return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
     }
 
-    function check_mail($email)
+    public function check_mail($form_data)
     { 
         $query = "SELECT email FROM users WHERE email=?";
-        return $this->db->query($query, $this->security->xss_clean($email))->result_array();
+        return $this->db->query($query, $this->security->xss_clean($form_data['email']))->result_array();
     }
 
-    function is_verified($email)
+    public function is_verified($email)
     { 
         $query = "SELECT status FROM users WHERE email=? and status = '1'";
         return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
     }
 
-    function create_user($user,$id)
+    public function resend_details($id)
+    { 
+        $query = "SELECT first_name, last_name, email, vkey FROM users WHERE id=? LIMIT 1";
+        return $this->db->query($query, $this->security->xss_clean($id))->result_array();
+    }
+
+    public function create_validation($form_data)
     {
-        $id = $id;
-        $user_level = '1';
+        $this->form_validation->set_error_delimiters('<div>','</div>');
+        $this->form_validation->set_rules('firstname', 'First Name', 'required');
+        $this->form_validation->set_rules('lastname', 'Last Name', 'required');
+        $this->form_validation->set_rules('phone', 'Phone', 'required|numeric');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        // $this->form_validation->set_rules('status', 'Status', 'required');
+
+        if(!$this->form_validation->run()) {
+            return validation_errors();
+        } 
+        else if(!empty($this->check_mail($form_data))){
+            $this->session->set_flashdata('error', 'Email Already in use');
+            return 'Email Already in use';
+        }
+    }
+
+    function get_user_applicant($form_data)
+    { 
+        return $this->db->query("SELECT id FROM users WHERE first_name=? AND last_name=? AND phone=? ORDER BY id DESC LIMIT 1", 
+        array(
+            $this->security->xss_clean($form_data['firstname']),
+            $this->security->xss_clean($form_data['lastname']),
+            $this->security->xss_clean($form_data['phone'])
+        ))->row_array(); 
+    }
+
+    public function create_user($user)
+    {
         $status = '0';
         $password = 'Iselco@2022';
         $vkey = md5(time().$user['firstname']);
 
-        $query = "INSERT INTO users (application_id, first_name, last_name, phone, email, password, user_level, vkey, status, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO users (first_name, last_name, phone, email, password, user_level, vkey, status, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?)";
         $values = array(
-            $id,
             $this->security->xss_clean($user['firstname']), 
             $this->security->xss_clean($user['lastname']), 
             $this->security->xss_clean($user['phone']), 
             $this->security->xss_clean($user['email']), 
             md5($this->security->xss_clean($password)),
-            $this->security->xss_clean($user_level), 
+            $this->security->xss_clean($user['userlevel']), 
             $this->security->xss_clean($vkey), 
             $this->security->xss_clean($status), 
             $this->security->xss_clean(date("Y-m-d, H:i:s")),
@@ -47,7 +78,28 @@ class User extends CI_Model {
         return $this->db->query($query, $values);
     }
 
-    function validate_signin_form() {
+    
+    public function create_user_applicant($user)
+    {
+        $password = 'Iselco@2022';
+        $vkey = md5(time().$user['firstname']);
+
+        $query = "INSERT INTO users (first_name, last_name, phone, email, password, vkey, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?)";
+        $values = array(
+            $this->security->xss_clean($user['firstname']), 
+            $this->security->xss_clean($user['lastname']), 
+            $this->security->xss_clean($user['phone']), 
+            $this->security->xss_clean($user['email']), 
+            md5($this->security->xss_clean($password)),
+            $this->security->xss_clean($vkey), 
+            $this->security->xss_clean(date("Y-m-d, H:i:s")),
+            $this->security->xss_clean(date("Y-m-d, H:i:s"))
+        ); 
+        $this->email->creation_email($user, $vkey);
+        return $this->db->query($query, $values);
+    }
+
+    public function validate_signin_form() {
         $this->form_validation->set_error_delimiters('<div>','</div>');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -60,7 +112,7 @@ class User extends CI_Model {
         }
     }
     
-    function validate_signin_match($user, $password) 
+    public function validate_signin_match($user, $password) 
     {
         $hash_password = md5($this->security->xss_clean($password));
 
@@ -71,21 +123,21 @@ class User extends CI_Model {
             return "Incorrect email/password.";
         }
     }
-    function validate_is_admin($email) 
+    public function validate_is_admin($email) 
     {
         $query = "SELECT user_level FROM users WHERE email=? and user_level = '0'";
         return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
     }
 
-    function get_user_id($id)
+    public function get_user_id($id)
     {
         $query = "SELECT * FROM users WHERE id=?";
         return $this->db->query($query, $this->security->xss_clean($id))->result_array()[0];
     }
 
-    function validate_information() 
+    public function validate_information() 
     {
-        $this->form_validation->set_error_delimiters('<div>','</div>');
+        $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
         $this->form_validation->set_rules('first_name', 'First Name', 'required|alpha');
         $this->form_validation->set_rules('last_name', 'Last Name', 'required|alpha');   
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email'); 
@@ -98,7 +150,7 @@ class User extends CI_Model {
         }
     }
 
-    function update_userinformation($form_data) 
+    public function update_userinformation($form_data) 
     {
         return $this->db->query("UPDATE users SET first_name = ?, last_name = ?, email = ?, updated_at = ? WHERE id = ?", 
         array(
@@ -109,39 +161,40 @@ class User extends CI_Model {
             $this->security->xss_clean($form_data['id'])));
     }
 
-    function validate_change_password($password = NULL) 
+    public function validate_change_password($password = null) 
     {
-        $this->form_validation->set_error_delimiters('<div>','</div>');
-        $this->form_validation->set_rules('old_password', 'Old Password', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');   
-        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');  
+        $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+        $this->form_validation->set_rules('current', 'Old Password', 'required');
+        $this->form_validation->set_rules('new', 'Password', 'required|min_length[8]');   
+        $this->form_validation->set_rules('confirm', 'Confirm Password', 'required|matches[new]');  
         
         if(!$this->form_validation->run()) {
             return validation_errors();
         }
         else if(empty($this->check_password($password))){
-                return 'incorrect old password';
+            $this->session->set_flashdata('old_pass', 'incorrect old password');
+            return 'old password not matched';
         }
     }
 
-    function check_password($password){
+    public function check_password($password){
          return $this->db->query("SELECT password FROM users WHERE id=? and password = ?", 
         array(
             $this->security->xss_clean($password['id']),
-            md5($this->security->xss_clean($password['old_password']))))->row_array(); 
+            md5($this->security->xss_clean($password['current']))))->row_array(); 
     }
 
-    function update_credentials($form_data) 
+    public function update_credentials($form_data) 
     {
         return $this->db->query("UPDATE users SET password = ?, updated_at = ? WHERE id = ?", 
         array(
-            md5($this->security->xss_clean($form_data['password'])), 
+            md5($this->security->xss_clean($form_data['new'])), 
             $this->security->xss_clean(date("Y-m-d, H:i:s")),
             $this->security->xss_clean($form_data['id'])));
     }
 
     
-    function verify($vkey) 
+    public function verify($vkey) 
     {
         $status = '1';
         return $this->db->query("UPDATE users SET status = ?, updated_at = ? WHERE vkey = ?", 
@@ -152,6 +205,42 @@ class User extends CI_Model {
             
         ));
     }
+
+    public function checkrules(){
+        $this->form_validation->set_error_delimiters('<div id="error">','</div>');
+        $this->form_validation->set_rules('firstname', 'First Name', 'required');
+        $this->form_validation->set_rules('lastname', 'Last Name', 'required');
+        $this->form_validation->set_rules('phone', 'Phone', 'required|numeric');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        if(!$this->form_validation->run()) {
+            return validation_errors();
+        }
+        else{
+            return 'success';
+        }
+       
+    }
+
+    public function update_user_details($form_data) 
+    {
+        $this->db->query("UPDATE users SET first_name = ?, last_name = ?, phone = ?, email = ?, updated_at = ? WHERE id = ?", 
+        array(
+            $this->security->xss_clean($form_data['firstname']),
+            $this->security->xss_clean($form_data['lastname']),
+            $this->security->xss_clean($form_data['phone']),
+            $this->security->xss_clean($form_data['email']),
+            $this->security->xss_clean(date("Y-m-d, H:i:s")),
+            $this->security->xss_clean($form_data['id'])));
+
+        return $this->dashboard->get_info($form_data['id']);
+    }
+
+    public function delete_user_id($id) {
+        return $this->db->query("DELETE FROM users WHERE id = ?", 
+        array(
+            $this->security->xss_clean($id)));
+    }
+
 }
 
 ?>

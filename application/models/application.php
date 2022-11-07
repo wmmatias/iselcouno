@@ -23,28 +23,18 @@ class Application extends CI_Model {
     }
 
 
-    function create_new($form_data)
+    function create_new($form_data, $id)
     { 
-        $status = md5(time().$form_data['baranggay'].$form_data["city"]);
-        $query = "INSERT INTO applications (blk, baranggay, city, status, created_at, updated_at) VALUES (?,?,?,?,?,?)";
+        // $status = md5(time().$form_data['baranggay'].$form_data["city"]);
+        $query = "INSERT INTO applications (blk, baranggay, city, created_by, created_at, updated_at) VALUES (?,?,?,?,?,?)";
         $values = array(
             $this->security->xss_clean($form_data['street']), 
             $this->security->xss_clean($form_data['baranggay']), 
             $this->security->xss_clean($form_data["city"]),
-            $this->security->xss_clean($status),
+            $id,
             $this->security->xss_clean(date("Y-m-d H:i:s")),
-            $this->security->xss_clean(date("Y-m-d H:i:s"))); 
+            $this->security->xss_clean(date("Y-m-d H:i:s")));
         return $this->db->query($query, $values);
-    }
-
-    function get_application_id($form_data)
-    { 
-        return $this->db->query("SELECT id FROM applications WHERE blk=? AND baranggay=? AND city=? ORDER BY id DESC LIMIT 1", 
-        array(
-            $this->security->xss_clean($form_data['street']),
-            $this->security->xss_clean($form_data['baranggay']),
-            $this->security->xss_clean($form_data['city'])
-        ))->row_array(); 
     }
 
 }

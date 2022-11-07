@@ -59,3 +59,14 @@ $route['users/signoff'] = 'users/logoff';
 $route['users/application'] = 'users/process_application';
 
 $route['users/verify/(:any)'] = 'users/verify/$1';
+
+$route['dashboards/user_list'] = 'dashboards/user_list';
+$route['dashboards/add'] = 'dashboards/add';
+$route['dashboards/delete/(:any)'] = 'dashboards/delete/$1';
+$route['dashboards/transaction_list'] = 'dashboards/transaction_list';
+$route['dashboards/product_list'] = 'dashboards/product_list';
+$route['dashboards/product/(:any)'] = 'dashboards/delete_product/$1';
+$route['dashboards/application_show/(:any)'] = 'clients/show/$1';
+$route['dashboards/product_show/(:any)'] = 'clients/product_show/$1';
+
+$route['clients/send_verification'] = 'clients/send';

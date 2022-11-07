@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $error = $this->session->flashdata('input_errors');
 $success = $this->session->flashdata('success');
 $form = $this->session->flashdata('form_error');
+$is_login = $this->session->userdata('user_id');
 ?>
         <!-- Masthead-->
         <header class="masthead">
@@ -65,7 +66,7 @@ else{
                         <hr class="divider divider-light" />   
                         <h2 class="text-white mt-0">Vission</h2>
                         <p class="text-white-75 mb-4">excellent power service distributor in the archipelago focused on bringing delight to our member-consumer-owners.</p>
-                        <a class="btn btn-light btn-xl" href="#services">Get Started!</a>
+                        <a class="btn btn-secondary btn-xl" href="#services">Get Started!</a>
                     </div>
                 </div>
             </div>
@@ -156,11 +157,12 @@ else{
         <section class="page-section bg-dark text-white" id="applicationForm">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">You Need Electric Meter?</h2>
-                <a class="btn btn-light btn-xl" href="#form">Apply Now!</a>
+                <a class="btn btn-primary btn-xl" href="#form">Apply Now!</a>
             </div>
         </section>
         <!-- Form-->
-        <section class="page-section">
+<?php   if(!$is_login){
+?>       <section class="page-section">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6 text-center">
@@ -221,4 +223,80 @@ else{
                     </div>
                 </div>
             </div>
+        </section>       
+<?php   }
+        else{
+?>        <section class="page-product" id="products">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6 text-center">
+                        <h2 class="mt-0" id="form">List of products</h2>
+                        <hr class="divider" />
+                    </div>
+                </div>
+                <div class="row">
+<?php               foreach($product as $data){
+?>                    <div class="col-sm-4 mt-2 mb-2">
+                        <div class="card">
+                            <img src="/assets/images/upload/<?=$data['image']?>" class="product_img card-img-top img-fluid" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?=$data['name']?></h5>
+                                <p class="card-text"><?=$data['description']?></p>
+                                <a href="#" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#apply" onclick="showProduct('<?=$data['id']?>')">Apply</a>
+                            </div>
+                        </div>
+                    </div>
+<?php               }
+?>                </div>
+            </div>
         </section>
+<?php   }
+?> 
+
+
+        <!-- Modal Apply-->
+        <div class="modal fade" id="apply" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Product Application</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="details" id="body-apply">
+                            <div class="row">
+                                <div class="col-sm mt-2" id="product_details"></div>
+                                <div class="col-sm mt-2">
+                                    <div class="card">
+                                        <div class="modal-header">
+                                           <p><strong>Applied for?:</strong></p> 
+                                        </div>
+                                        <div class="card-body">
+                                            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>" />
+                                            <div class="form-group">
+                                                <label for="blk">Blk</label>
+                                                <input type="text" name="blk" class="form-control" placeholder="P BLK LOT House#">
+                                                <?php echo form_error('current') ?>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="baranggay">Baranggay</label>
+                                                <input type="text" name="baranggay" class="form-control" placeholder="Baranggay">
+                                                <?php echo form_error('new') ?>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="city">City/Municipality</label>
+                                                <input type="text" name="city" class="form-control" placeholder="City / Municipality">
+                                                <?php echo form_error('confirm') ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Apply</button>
+                    </div>
+                </div>
+            </div>
+        </div>

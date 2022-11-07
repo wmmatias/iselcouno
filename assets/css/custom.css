@@ -47,6 +47,14 @@
 }
 
 #mainNav{
-    background-color: #726f67;
+    background-color: #1d3b55;
   }
-  
+
+  *{
+    margin: 0px;
+    padding: 0px;
+  }
+
+/* .product_img{
+    height: 100px;
+} */

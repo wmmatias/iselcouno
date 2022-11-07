@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $is_login = $this->session->userdata('user_id');
 $fullname = $this->session->userdata('fullname');
+$status = $this->session->userdata('status');
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +26,91 @@ $fullname = $this->session->userdata('fullname');
         <link href="/assets/css/styles.css" rel="stylesheet" />
         <link href="/assets/css/custom.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-        <!-- <script src="/assets/js/App.js"></script> -->
+        <script src="/assets/js/Client.js"></script>
+        
+<script type="text/javascript">
+    function showProject(id)
+    {
+        $("#body-timeline").html("");
+        let url = "/dashboards/application_show/" + id +"";
+        $.ajax({
+            url: url,
+            type: "GET",
+            success: function(response) {
+                let details = response[0];
+                data = [
+                    {
+                        id: 1,
+                        title: 'Application',
+                        description: 'Verify your account! apply a product you want then your application is subject for evaluation.'
+                    },
+                    {
+                        id: 2,
+                        title: 'Scheduling of Inspection',
+                        description: 'If your application passed in evaluation you are subject for inspection keep your line open and assist us in your home/establishment for inspection.'
+                    },
+                    {
+                        id: 3,
+                        title: 'Inspection Passed',
+                        description: 'You need to pay your application! you can pay through bank or over the counter. if you wish to use bank you may pay in through pay now button in your application.'
+                    },
+                    {
+                        id: 4,
+                        title: 'Calibration and Installation',
+                        description: 'Your payment has been posted, you are subject for installation just keep your line open.'
+                    },
+                    {
+                        id: 5,
+                        title: 'Success Congratulations',
+                        description: 'Your meter has been installed for more service call or book us here Thank you!'
+                    }
+                ];
+                container = document.getElementById('body-timeline');
+                for(i = 0; i < data.length; i++){
+                    if(data[i].id < details.step){
+                        container.innerHTML+='<div class="row"><div class="col-auto text-center flex-column d-none d-sm-flex"><div class="row h-50"><div class="col">&nbsp;</div><div class="col">&nbsp;</div></div><h5 class="m-2"><span class="badge rounded-circle bg-success border-success">&nbsp;</span></h5><div class="row h-50"><div class="col border-end">&nbsp;</div><div class="col">&nbsp;</div></div></div><div class="col py-2"><div class="card-body border-success shadow bg-success text-white"><h5 class="card-title" id="title">'+ data[i].title +'</h5><p class="card-text" id="description">'+ data[i].description +'</p></div></div></div>';
+                    }
+                    else if(data[i].id > details.step){
+                        container.innerHTML+='<div class="row"><div class="col-auto text-center flex-column d-none d-sm-flex"><div class="row h-50"><div class="col">&nbsp;</div><div class="col">&nbsp;</div></div><h5 class="m-2"><span class="badge rounded-circle bg-light border">&nbsp;</span></h5><div class="row h-50"><div class="col border-end">&nbsp;</div><div class="col">&nbsp;</div></div></div><div class="col py-2"><div class="card-body border"><h5 class="card-title text-muted" id="title">'+ data[i].title +'</h5><p class="card-text text-muted" id="description">'+ data[i].description +'</p></div></div></div>';
+                    }
+                    else if(data[i].id = details.step){
+                        container.innerHTML+='<div class="row"><div class="col-auto text-center flex-column d-none d-sm-flex"><div class="row h-50"><div class="col">&nbsp;</div><div class="col">&nbsp;</div></div><h5 class="m-2"><span class="badge rounded-circle bg-primary border-primary">&nbsp;</span></h5><div class="row h-50"><div class="col border-end">&nbsp;</div><div class="col">&nbsp;</div></div></div><div class="col py-2"><div class="card-body border-primary shadow bg-primary text-white"><h5 class="card-title" id="title">'+ data[i].title +'</h5><p class="card-text" id="description">'+ data[i].description +'</p></div></div></div>';
+                    }
+                }
+                $("#view-modal").modal('show'); 
+                 
+            },
+            error: function(response) {
+                console.log(response)
+            }
+        });
+    }
+    function showProduct(id)
+    {
+        $("#product_details").html("");
+        let url = "/dashboards/product_show/" + id +"";
+        $.ajax({
+            url: url,
+            type: "GET",
+            success: function(response) {
+                console.log(response);
+                let details = response[0];
+                console.log(details.step);
+                data = [1];
+                container = document.getElementById('product_details');
+                container.innerHTML+='<div class="card"><div class="card-body"><h5 class="card-title">title</h5><p class="card-text">desc</p></div></div>';
+                $("#apply").modal('show'); 
+                 
+            },
+            error: function(response) {
+                console.log(response)
+            }
+        });
+    }
+</script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -44,7 +127,8 @@ $fullname = $this->session->userdata('fullname');
 <?php
                         }
                         else{
-?>                        <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#status">Application Status</a></li>
+?>                        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+<!-- <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#status">Application Status</a></li> -->
 <?php
                         }
 ?>                    </ul>
@@ -59,6 +143,7 @@ $fullname = $this->session->userdata('fullname');
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profile">Profile</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#application">Application</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li class="p-2"><a class="btn btn-primary bg-primary text-white w-100" href="/users/signoff">Logout</a></li>
                     </ul>
@@ -70,3 +155,83 @@ $fullname = $this->session->userdata('fullname');
             </div>
         </nav>
        
+        <!-- modal application -->
+        <div class="modal fade" id="application" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Applications</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table text-nowrap table-hover table-bordered">
+                                <thead class="text-center bg-primary bg-gradient">
+                                    <tr>
+                                    <th>Application ID</th>
+                                    <th>Address</th>
+                                    <th>Status</th>
+                                    <th>created_at</th>
+                                    <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+<?php                               if(empty($app)){
+?>                                      <tr>
+                                            <td colspan="5">Please select product</td>
+                                        </tr>
+<?php
+                                    }
+                                    foreach($app as $detail){
+                                        $create = date('m-d-Y', strtotime($detail['created_at']));  
+?>                                    <tr>
+                                        <td><?=$detail['id']?></td>
+                                        <td><?=$detail['blk'].' '.$detail['baranggay'].' '.$detail['city']?></td>
+                                        <td>
+<?php                                       if($detail['status'] === '0'){
+?>                                              <p class="badge bg-primary">New</p>
+<?php                                       }
+                                            elseif($detail['status'] === '1'){
+?>                                              <p class="badge bg-info">On Process</p>
+<?php                                       }
+                                            elseif($detail['status'] === '2'){
+?>                                              <p class="badge bg-danger">Canceled</p>
+<?php                                       }
+                                            elseif($detail['status'] === '3'){
+?>                                              <p class="badge bg-success">Done</p>
+<?php                                       }
+                                            if($detail['step'] === '3'){
+?>                                              <p class="badge bg-warning"> <a href="">Pay Now</a></p>
+<?php                                       }
+?>                                        </td>
+                                        <td><?=$create?></td>
+                                        <td>
+                                            <!-- <form> -->
+                                                <input type="hidden" value="<?=$detail['id']?>">
+                                                <button class="btn btn-primary" onclick="showProject('<?=$detail['id']?>')"><i class="fas fa-eye"></i></button>
+                                            <!-- </form> -->
+                                        </td>
+                                    </tr>
+<?php                               }                            
+?>                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- view record modal -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="view-modal" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Application Timeline</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div id="body-timeline" class="modal-body"></div>
+                </div>
+            </div>
+        </div>
