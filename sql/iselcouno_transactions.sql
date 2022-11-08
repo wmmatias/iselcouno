@@ -16,26 +16,24 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `transactions`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `transactions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
+CREATE TABLE `transactions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `user_level` varchar(255) DEFAULT '1',
-  `vkey` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT '0',
+  `application_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`,`application_id`,`product_id`,`created_by`),
+  KEY `fk_transaction_applications1_idx` (`application_id`,`product_id`,`created_by`),
+  CONSTRAINT `fk_transaction_applications1` FOREIGN KEY (`application_id`, `product_id`, `created_by`) REFERENCES `applications` (`id`, `product_id`, `created_by`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

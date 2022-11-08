@@ -58,3 +58,11 @@
 /* .product_img{
     height: 100px;
 } */
+
+.show_product{
+    width: 200px;
+}
+
+#show_qty{
+    width: 70px;
+}

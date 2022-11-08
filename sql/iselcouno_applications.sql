@@ -24,14 +24,20 @@ DROP TABLE IF EXISTS `applications`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `applications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL DEFAULT '1',
+  `qty` int(11) DEFAULT '1',
   `blk` varchar(255) DEFAULT NULL,
   `baranggay` varchar(255) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT '0',
+  `step` int(11) DEFAULT '1',
+  `created_by` int(11) NOT NULL,
   `created_at` varchar(255) DEFAULT NULL,
   `updated_at` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`,`product_id`,`created_by`),
+  KEY `fk_applications_users_idx` (`created_by`),
+  KEY `fk_applications_products1_idx` (`product_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -43,4 +49,4 @@ CREATE TABLE `applications` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-26  0:58:48
+-- Dump completed on 2022-11-08  9:40:56

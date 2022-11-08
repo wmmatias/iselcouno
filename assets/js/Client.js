@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    $(document).on('click', '#show_qty', function(){
+        alert('you change me');
+    });
     $('#profile').on('show.bs.modal', function (e) {
         $('form#form-input input').attr('readonly',true);
         $('form #form-button').attr('disabled',true);

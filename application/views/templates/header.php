@@ -98,10 +98,8 @@ $status = $this->session->userdata('status');
             success: function(response) {
                 console.log(response);
                 let details = response[0];
-                console.log(details.step);
-                data = [1];
                 container = document.getElementById('product_details');
-                container.innerHTML+='<div class="card"><div class="card-body"><h5 class="card-title">title</h5><p class="card-text">desc</p></div></div>';
+                container.innerHTML+='<div class="card"><div class="card-body"><div class="col d-inline-block align-top"><img class="show_product img-fluid border me-2" src="/assets/images/upload/'+ details.image +'" alt=""></div><div class="col d-inline-block"><h5>'+ details.name +'</h5><p>'+ details.description +'</p><div class="form-group"><label for="qty">Qty:</label><input type="hidden" name="prod_id" class="form-control" value="'+ details.id +'"><input type="number" id="show_qty" name="qty" class="form-control" value="1" min="1" ><label for="total" id="total"><strong></strong></label></div></div></div></div>';
                 $("#apply").modal('show'); 
                  
             },

@@ -243,6 +243,7 @@ else{
                                 <h5 class="card-title"><?=$data['name']?></h5>
                                 <p class="card-text"><?=$data['description']?></p>
                                 <a href="#" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#apply" onclick="showProduct('<?=$data['id']?>')">Apply</a>
+                                <!-- <a href="#" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#apply">Apply</a> -->
                             </div>
                         </div>
                     </div>
@@ -263,40 +264,61 @@ else{
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="details" id="body-apply">
-                            <div class="row">
-                                <div class="col-sm mt-2" id="product_details"></div>
-                                <div class="col-sm mt-2">
-                                    <div class="card">
-                                        <div class="modal-header">
-                                           <p><strong>Applied for?:</strong></p> 
+                        <form action="" method="post">
+                            <div class="details" id="body-apply">
+                                <div class="row">
+                                    <div class="col-sm mt-2" id="product_details">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="col d-inline-block align-top">
+                                                    <img class="show_product img-fluid" src="/assets/images/upload/1667795791productmeter.jpg" alt="">
+                                                </div>
+                                                <div class="col d-inline-block align-top">
+                                                    <h5>Title</h5>
+                                                    <p>Description</p>
+                                                    <div class="form-group">
+                                                        <label for="qty">Qty:</label>
+                                                        <input type="number" id="show_qty" name="qty" class="form-control" value="1" min="1">
+                                                        <label for="total"><strong>Total Amount: 10000</strong></label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="card-body">
-                                            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>" />
-                                            <div class="form-group">
-                                                <label for="blk">Blk</label>
-                                                <input type="text" name="blk" class="form-control" placeholder="P BLK LOT House#">
-                                                <?php echo form_error('current') ?>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="baranggay">Baranggay</label>
-                                                <input type="text" name="baranggay" class="form-control" placeholder="Baranggay">
-                                                <?php echo form_error('new') ?>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="city">City/Municipality</label>
-                                                <input type="text" name="city" class="form-control" placeholder="City / Municipality">
-                                                <?php echo form_error('confirm') ?>
+                                    </div>
+                                    <div class="col-sm mt-2">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <p><strong>Applied for?</strong></p> 
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="new_address" name="new" value="new">
+                                                    <label class="form-check-label" for="new_address">New Address</label>
+                                                </div>
+                                                <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>" />
+                                                <div class="form-group">
+                                                    <label for="blk">Blk</label>
+                                                    <input type="text" name="blk" class="form-control" placeholder="P BLK LOT House#">
+                                                    <?php echo form_error('current') ?>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="baranggay">Baranggay</label>
+                                                    <input type="text" name="baranggay" class="form-control" placeholder="Baranggay">
+                                                    <?php echo form_error('new') ?>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="city">City/Municipality</label>
+                                                    <input type="text" name="city" class="form-control" placeholder="City / Municipality">
+                                                    <?php echo form_error('confirm') ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary">Apply</button>
-                    </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary">Apply</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
