@@ -23,24 +23,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="col-md">
                                     <div class="col-md mb-3">
                                         <label for="name">Item Name</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Item Name" >
+                                        <input type="text" class="form-control" name="name" placeholder="Item Name" required>
                                         <?php echo form_error('name') ?>
                                     </div>
                                     <div class="col-md mb-3">
                                         <label for="description">Item Description</label>
-                                        <input type="text" class="form-control" name="description" placeholder="Item Description" >
+                                        <input type="text" class="form-control" name="description" placeholder="Item Description" required>
                                         <?php echo form_error('description') ?>
                                     </div>
                                     <div class="col-md mb-3">
                                         <label for="amount">Amount</label>
-                                        <input type="text" class="form-control" name="amount" placeholder="Amount" >
+                                        <input type="text" class="form-control" name="amount" placeholder="Amount" required>
                                         <?php echo form_error('amount') ?>
                                     </div>
                                 </div>
                                 <div class="col-md">
                                     <div class="col-md mb-3">
                                         <label for="image">Image</label>
-                                        <input type="file" class="form-control" name="image" placeholder="image" id="upload_file" onchange="getImagePreview(event)" accept=".jpg, .jpeg, .png" >
+                                        <input type="file" class="form-control" name="image" placeholder="image" id="upload_file" onchange="getImagePreview(event)" accept=".jpg, .jpeg, .png" required>
                                         <?php echo form_error('image') ?>
                                         <?php if(isset($error)) { echo $error; }?>
                                     </div>

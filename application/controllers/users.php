@@ -39,7 +39,7 @@ class Users extends CI_Controller {
                     else{
                         $this->session->set_flashdata('success', '<strong>Successfully!</strong> logged in!');
                         $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname, 'details'=>$details, 'status'=> $status));
-                        redirect("clients/client");
+                        redirect("clients");
                     }
                 }
                 else 

@@ -17,28 +17,26 @@ class Clients extends CI_Controller {
 	//     $this->load->view("partials/client_profile", $data);
     // }
 
-    public function index() 
-    {   
-        $user = $this->session->userdata('user_id');
-        $isadmin = $this->session->userdata('auth');
-        if(!$isadmin){
-            // $this->load->view('templates/header');
-            // $this->load->view('client/index');
-            // $this->load->view('templates/footer');
-            $this->client();
-        }
-        else{
-            redirect('dashboards');
-        }
-    }
+    // public function index() 
+    // {   
+    //     $user = $this->session->userdata('user_id');
+    //     $isadmin = $this->session->userdata('auth');
+    //     if(!$isadmin){
+    //         // $this->load->view('templates/header');
+    //         // $this->load->view('client/index');
+    //         // $this->load->view('templates/footer');
+    //         $this->client();
+    //     }
+    //     else{
+    //         redirect('dashboards');
+    //     }
+    // }
 
     
-    public function client() 
+    public function index() 
     {   
         $isadmin = $this->session->userdata('auth');
         if(!$isadmin){
-            // $appid = $this->client->get_application_status($this->session->userdata('user_id'));
-            // $res = $this->client->get_timeline($appid);
             $id = $this->session->userdata('user_id');
             $application = $this->client->get_application_details($id);
             $product = $this->dashboard->fetch_all_product();
