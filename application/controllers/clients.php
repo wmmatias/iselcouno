@@ -39,7 +39,8 @@ class Clients extends CI_Controller {
         if(!$isadmin){
             // $appid = $this->client->get_application_status($this->session->userdata('user_id'));
             // $res = $this->client->get_timeline($appid);
-            $application = $this->client->get_application_details($this->session->userdata('user_id'));
+            $id = $this->session->userdata('user_id');
+            $application = $this->client->get_application_details($id);
             $product = $this->dashboard->fetch_all_product();
             $data = array('app'=>$application, 'product'=>$product);
             $this->load->view('templates/header', $data);
@@ -115,6 +116,31 @@ class Clients extends CI_Controller {
         $espicific_product = $this->client->get_product_details_by_id($id);
         header('Content-Type: application/json');
         echo json_encode($espicific_product);
+    }
+
+    public function add_application(){
+        // var_dump($_POST);
+        $form_data = $this->input->post();
+        $result = $this->application->validate_add_prod();
+        if($result!= 'success')
+        {
+            $this->session->set_flashdata('form_error', 'Something went wrong!' . ($result != 'success' ? '': ''));
+            $this->load->view('templates/header');
+            $this->load->view('client/index');
+            $this->load->view('templates/footer');
+        }
+        else
+        {
+            $this->application->create_new($form_data);
+            $this->session->set_flashdata('success', 'Your product has beed add and subject for approval visit your <a href="#" data-bs-toggle="modal" data-bs-target="#application">Application</a> tab to check the status.');
+            redirect('/');
+        }
+    }
+
+    public function check_out($id){
+        $res = $this->dashboard->fetch_application_id($id);
+        $data = array('details'=>$res);
+        $this->load->view('client/check_out', $data);
     }
  
 }

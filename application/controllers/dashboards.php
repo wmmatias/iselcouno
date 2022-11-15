@@ -16,12 +16,18 @@ class Dashboards extends CI_Controller {
             redirect('/');
         }
         else{
+            $res = $this->dashboard->select_new();
+            $app = array('app'=>$res);
+            $new = $this->dashboard->count_new();
+            $onprocess = $this->dashboard->count_onprocess();
+            $success = $this->dashboard->count_success();
+            $cancel = $this->dashboard->count_cancelled();
             $res = $this->dashboard->get_info($this->session->userdata('user_id'));
-            $data = array ('data' => $res);
+            $data = array ('data' => $res, 'new'=>$new, 'onprocess'=>$onprocess, 'success'=>$success, 'cancel'=>$cancel);
             $this->load->view('admin/template/header');
             $this->load->view('admin/template/sidebar');
             $this->load->view('admin/template/topnavbar', $data);
-            $this->load->view('admin/dashboard');
+            $this->load->view('admin/dashboard', $app);
             $this->load->view('admin/template/footer');
         }
     }
@@ -155,6 +161,53 @@ class Dashboards extends CI_Controller {
         }
     }
 
+
+    // public function update_product() 
+    // {   
+    //     $isadmin = $this->session->userdata('auth');
+    //     if(!$isadmin){
+    //         redirect('/');
+    //     }
+    //     else{
+    //         $this->form_validation->set_error_delimiters('<div class="text-danger">','</div>');
+    //         $this->form_validation->set_rules('name', 'Item Name', 'required');
+    //         $this->form_validation->set_rules('description', 'Description', 'required');
+    //         $this->form_validation->set_rules('amount', 'amount', 'required');
+
+    //         if($this->form_validation->run()) {
+    //             $image = $_FILES['image']['name'];
+    //             $new_name = time()."product".$image;
+    //             $config = [
+    //                 'upload_path' => './assets/images/upload',
+    //                 'allowed_types' => 'jpg|jpeg|png',
+    //                 'file_name' => $new_name,
+    //             ];
+    //             $this->upload->initialize($config);
+    //             if ( ! $this->upload->do_upload('image')){
+    //                 $error = array('error' => $this->upload->display_errors());
+    
+    //                 $this->load->view('admin/template/header');
+    //                 $this->load->view('admin/template/sidebar');
+    //                 $this->load->view('admin/template/topnavbar');
+    //                 $this->load->view('admin/edit_product', $error);
+    //                 $this->load->view('admin/template/footer');
+    //             }
+    //             else{
+    //                 $form_data = $this->input->post();
+    //                 $filename = $this->upload->data('file_name');
+                    
+    //                 $this->dashboard->update_product($form_data, $filename);
+    //                 $this->session->set_flashdata('success', 'Successfully Created!');
+    //                 redirect('dashboards/product_list');
+    //             }
+
+    //         }
+    //         else{
+    //             // $this->edit_product();
+    //         }
+    //     }
+    // }
+
     public function delete($id) 
     {  
         $this->user->delete_user_id($id);
@@ -184,6 +237,37 @@ class Dashboards extends CI_Controller {
             $this->load->view('admin/application_list', $data);
             $this->load->view('admin/template/footer');
         }
+    }
+
+    
+    public function cancel($id){
+        $this->application->cancel_app($id);
+        $this->session->set_flashdata('success', 'Successfully Cancelled!');
+        $this->application_list();
+    }
+
+    public function application_view($id) 
+    {   
+        $isadmin = $this->session->userdata('auth');
+        if(!$isadmin){
+            redirect('/');
+        }
+        else{
+            $res = $this->dashboard->fetch_application_id($id);
+            $data = array('application_details' => $res);
+            $this->load->view('admin/template/header');
+            $this->load->view('admin/template/sidebar');
+            $this->load->view('admin/template/topnavbar');
+            $this->load->view('admin/application_view', $data);
+            $this->load->view('admin/template/footer');
+        }
+    }
+    
+    public function steps_update(){
+        $form_data = $this->input->post();
+        $this->application->steps_update($form_data);
+        $this->session->set_flashdata('success', 'Successfully Update!');
+        $this->application_view($form_data['app_id']);
     }
 
     public function product_list() 
@@ -220,6 +304,15 @@ class Dashboards extends CI_Controller {
         }
     }
 
-
+    public function edit_product($id){
+        $res = $this->dashboard->get_product_id($id);
+        $data = array('products'=>$res);
+        $this->load->view('admin/template/header');
+        $this->load->view('admin/template/sidebar');
+        $this->load->view('admin/template/topnavbar');
+        $this->load->view('admin/edit_product', $data);
+        $this->load->view('admin/template/footer');
+    }
+ 
 
 }

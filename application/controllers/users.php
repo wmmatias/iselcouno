@@ -21,6 +21,7 @@ class Users extends CI_Controller {
         {
             $email = $this->input->post('email');
             $user = $this->user->get_user_by_email($email);
+            $details = $this->user->get_details_by_email($email);
             $fullname = $user['first_name'] . ' ' . $user['last_name'];
             $status = $user['status'];
 
@@ -37,7 +38,7 @@ class Users extends CI_Controller {
                     }
                     else{
                         $this->session->set_flashdata('success', '<strong>Successfully!</strong> logged in!');
-                        $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname, 'status'=> $status));
+                        $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname, 'details'=>$details, 'status'=> $status));
                         redirect("clients/client");
                     }
                 }
@@ -75,10 +76,9 @@ class Users extends CI_Controller {
             $check_email = $this->user->check_mail($form_data);
             if(!$check_email){
                 $this->user->create_user_applicant($form_data);
-                $id = $this->user->get_user_applicant($form_data);
-                $this->application->create_new($form_data, $id);
-                $app_id = $this->client->get_application($id);
-                $this->client->first_timeline($app_id);
+                // $id = $this->user->get_user_applicant($form_data);
+                // $app_id = $this->client->get_application($id);
+                // $this->client->first_timeline($app_id);
                 $this->session->set_flashdata('success', 'Your request has been process! check your <a href="https://mail.google.com/mail/u/0/#inbox">email</a> to validate your account');
                 $this->load->view('templates/header');
                 $this->load->view('client/index');

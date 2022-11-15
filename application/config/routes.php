@@ -66,7 +66,17 @@ $route['dashboards/delete/(:any)'] = 'dashboards/delete/$1';
 $route['dashboards/transaction_list'] = 'dashboards/transaction_list';
 $route['dashboards/product_list'] = 'dashboards/product_list';
 $route['dashboards/product/(:any)'] = 'dashboards/delete_product/$1';
+$route['dashboards/edit_product/(:any)'] = 'dashboards/edit_product/$1';
+
 $route['dashboards/application_show/(:any)'] = 'clients/show/$1';
 $route['dashboards/product_show/(:any)'] = 'clients/product_show/$1';
+$route['dashboards/cancel/(:any)'] = 'dashboards/cancel/$1';
+$route['dashboards/view/(:any)'] = 'dashboards/application_view/$1';
+$route['dashboards/steps_update'] = 'dashboards/steps_update';
 
 $route['clients/send_verification'] = 'clients/send';
+$route['clients/check_out/(:any)'] = 'clients/check_out/$1';
+
+$route['payments/success'] = 'payments/success';
+$route['payments/cancel'] = 'payments/cancel';
+$route['payments/counter/(:any)'] = 'payments/counter/$1';

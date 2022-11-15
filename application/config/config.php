@@ -514,3 +514,8 @@ $config['proxy_ips'] = '';
 // $config['enable_query_strings'] = FALSE;
 // $config['encryption_key'] = '(OO|_3n(rYp+!On_k3Y';
 // $config['sess_expiration'] = 0;
+
+// Stripe payment congif code
+$config['stripe_publishable_key'] ="pk_test_51LTLgSFoifFU1LWNfu12znSsB4nYJUIvtz5Q4H9xX19U7oWT5yywkXH3cO65629EUWM6lLoU8mZnlwd2yrSMxTMI00GUFMh0rX";
+$config['stripe_secret_key'] = "sk_test_51LTLgSFoifFU1LWNLhg2I7VOJcL55feZjBMltx9ATrMLuv3gMq0TniGxjYHJ9jIXftz07d3GifNJPlog1dol1fzq00XLM8j8h7";
+$config['stripe_currency'] = "php";

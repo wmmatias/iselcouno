@@ -46,6 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <td><?= $data['description'] ?></td>
                                             <td><?= number_format($data['amount'],2) ?></td>
                                             <td>
+                                                <!-- <a href="/dashboards/edit_product/<?=$data['id']?>" class="text-xxsm btn btn-success" tabindex="0" data-toggle="tooltip" data-original-title="Edit" data-placement="left"><i class="mdi mdi-pen"></i></a> -->
                                                 <a href="/dashboards/product/<?=$data['id']?>" onclick="return confirm('Are you sure you want to DELETE this?')" class="text-xxsm btn btn-danger" tabindex="0" data-toggle="tooltip" data-original-title="Delete" data-placement="left"><i class="mdi mdi-delete-forever"></i></a>
                                             </td>
 <?php                           }

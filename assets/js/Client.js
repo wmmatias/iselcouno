@@ -1,11 +1,30 @@
 $(document).ready(function(){
-    $(document).on('click', '#show_qty', function(){
-        alert('you change me');
+    $(document).on('change', '#show_qty', function(){
+        console.log('you change me');
     });
     $('#profile').on('show.bs.modal', function (e) {
         $('form#form-input input').attr('readonly',true);
         $('form #form-button').attr('disabled',true);
         $('#change_password').hide();
+    });
+
+    $('#apply').on('show.bs.modal', function (e) {
+        $('#blk').attr('readonly',true);
+        $('#baranggay').attr('readonly',true);
+        $('#city').attr('readonly',true);
+    });
+   
+
+    $('#new_address').change(function(){
+        if($('#new_address:checked').length){
+            $('#blk').attr('readonly',false);
+            $('#baranggay').attr('readonly',false);
+            $('#city').attr('readonly',false);
+        }else{
+            $('#blk').attr('readonly',true);
+            $('#baranggay').attr('readonly',true);
+            $('#city').attr('readonly',true);
+        }
     });
 
     $('#edit').change(function(){

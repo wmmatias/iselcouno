@@ -9,6 +9,12 @@ class User extends CI_Model {
         return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
     }
 
+    public function get_details_by_email($email)
+    { 
+        $query = "SELECT id, blk, baranggay, city FROM users WHERE email=?";
+        return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
+    }
+
     public function check_mail($form_data)
     { 
         $query = "SELECT email FROM users WHERE email=?";
@@ -84,12 +90,15 @@ class User extends CI_Model {
         $password = 'Iselco@2022';
         $vkey = md5(time().$user['firstname']);
 
-        $query = "INSERT INTO users (first_name, last_name, phone, email, password, vkey, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO users (first_name, last_name, phone, email, blk, baranggay, city, password, vkey, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         $values = array(
             $this->security->xss_clean($user['firstname']), 
             $this->security->xss_clean($user['lastname']), 
             $this->security->xss_clean($user['phone']), 
             $this->security->xss_clean($user['email']), 
+            $this->security->xss_clean($user['street']), 
+            $this->security->xss_clean($user['baranggay']), 
+            $this->security->xss_clean($user['city']), 
             md5($this->security->xss_clean($password)),
             $this->security->xss_clean($vkey), 
             $this->security->xss_clean(date("Y-m-d, H:i:s")),

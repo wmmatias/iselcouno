@@ -114,6 +114,7 @@ $status = $this->session->userdata('status');
         <!-- Navigation-->
         <nav class="top-nav navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
+                <!-- <a class="navbar-brand" href="#page-top"><img src="/assets/images/logo.jpg" style="width: 150px;" class="img-fluid" alt="logo"></a> -->
                 <a class="navbar-brand" href="#page-top">Iselco Uno</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -189,17 +190,20 @@ $status = $this->session->userdata('status');
 <?php                                       if($detail['status'] === '0'){
 ?>                                              <p class="badge bg-primary">New</p>
 <?php                                       }
-                                            elseif($detail['status'] === '1'){
+                                            elseif($detail['status'] === '1' || $detail['status'] === '1.1'){
 ?>                                              <p class="badge bg-info">On Process</p>
 <?php                                       }
                                             elseif($detail['status'] === '2'){
-?>                                              <p class="badge bg-danger">Canceled</p>
-<?php                                       }
-                                            elseif($detail['status'] === '3'){
 ?>                                              <p class="badge bg-success">Done</p>
 <?php                                       }
-                                            if($detail['step'] === '3'){
-?>                                              <p class="badge bg-warning"> <a href="">Pay Now</a></p>
+                                            elseif($detail['status'] === '3'){
+?>                                              <p class="badge bg-danger">Cancelled</p>
+<?php                                       }
+                                            if($detail['step'] === '3' && $detail['status'] === '1'){
+?>                                              <p class="badge bg-warning <?=($detail['status'] === '3' ? 'd-none':'')?>"> <a href="/clients/check_out/<?=$detail['id']?>">Pay Now</a></p>
+<?php                                       }
+                                            else if($detail['step'] === '3' && $detail['status'] === '1.1'){
+?>                                              <p class="badge bg-success <?=($detail['status'] === '3' ? 'd-none':'')?>">Paid</p>
 <?php                                       }
 ?>                                        </td>
                                         <td><?=$create?></td>

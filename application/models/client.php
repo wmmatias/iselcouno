@@ -17,7 +17,7 @@ class Client extends CI_Model {
 
     public function get_application_details($id)
     {
-        $query = "SELECT * FROM applications WHERE created_by=? AND product_id != '1'";
+        $query = "SELECT * FROM applications WHERE created_by = ?";
         return $this->db->query($query, $this->security->xss_clean($id))->result_array();
     }
 

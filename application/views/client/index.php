@@ -71,90 +71,10 @@ else{
                 </div>
             </div>
         </section>
-        <!-- Services-->
-        <section class="page-section" id="services">
-            <div class="container px-4 px-lg-5">
-                <h2 class="text-center mt-0">At Your Service</h2>
-                <hr class="divider" />
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <a class="text-decoration-none" href="https://iselcouno.com/services/billing-rates">
-                            <div class="mt-5">
-                                <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
-                                <h3 class="h4 mb-2 text-black font-weight-bold">Billing Rate</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <a class="text-decoration-none" href="#applicationForm">
-                            <div class="mt-5">
-                                <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
-                                <h3 class="h4 mb-2 text-black font-weight-bold">Electric Meter</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <a class="text-decoration-none" href="#applicationForm">
-                            <div class="mt-5">
-                                <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
-                                <h3 class="h4 mb-2 text-black font-weight-bold">Wiring Jobs</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <a class="text-decoration-none" href="https://iselcouno.com/services/kuryentipid-tips">
-                            <div class="mt-5">
-                                <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
-                                <h3 class="h4 mb-2 text-black font-weight-bold">Kuryentipid Tips</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Portfolio-->
-        <div id="portfolio">
-            <div class="container-fluid p-0">
-                <div class="row g-0">
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="../../../assets/images/portfolio/fullsize/1.jpg" title="Project Name">
-                            <img class="img-fluid" src="../../../assets/images/portfolio/thumbnails/1.jpg" alt="..." />
-                            <!-- <div class="portfolio-box-caption">
-                                <div class="project-category text-white-50">Category</div>
-                                <div class="project-name">Project Name</div>
-                            </div> -->
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="../../../assets/images/portfolio/fullsize/2.jpg" title="Project Name">
-                            <img class="img-fluid" src="../../../assets/images/portfolio/thumbnails/2.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="../../../assets/images/portfolio/fullsize/3.jpg" title="Project Name">
-                            <img class="img-fluid" src="../../../assets/images/portfolio/thumbnails/3.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="../../../assets/images/portfolio/fullsize/4.jpg" title="Project Name">
-                            <img class="img-fluid" src="../../../assets/images/portfolio/thumbnails/4.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="../../../assets/images/portfolio/fullsize/5.jpg" title="Project Name">
-                            <img class="img-fluid" src="../../../assets/images/portfolio/thumbnails/5.jpg" alt="..." />
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a class="portfolio-box" href="../../../assets/images/portfolio/fullsize/6.jpg" title="Project Name">
-                            <img class="img-fluid" src="../../../assets/images/portfolio/thumbnails/6.jpg" alt="..." />
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
         <!-- Call to action-->
-        <section class="page-section bg-dark text-white" id="applicationForm">
+ <section class="page-section bg-dark text-white" id="applicationForm">
             <div class="container px-4 px-lg-5 text-center">
                 <h2 class="mb-4">You Need Electric Meter?</h2>
                 <a class="btn btn-primary btn-xl" href="#form">Apply Now!</a>
@@ -254,6 +174,89 @@ else{
 <?php   }
 ?> 
 
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mt-0">At Your Service</h2>
+                <hr class="divider" />
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <a class="text-decoration-none" href="https://iselcouno.com/services/billing-rates">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2 text-black font-weight-bold">Billing Rate</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <a class="text-decoration-none" href="#applicationForm">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2 text-black font-weight-bold">Electric Meter</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <a class="text-decoration-none" href="#applicationForm">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2 text-black font-weight-bold">Wiring Jobs</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <a class="text-decoration-none" href="https://iselcouno.com/services/kuryentipid-tips">
+                            <div class="mt-5">
+                                <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
+                                <h3 class="h4 mb-2 text-black font-weight-bold">Kuryentipid Tips</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio-->
+        <div id="portfolio">
+            <div class="container-fluid p-0">
+                <div class="row g-0">
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="/assets/images/portfolio/fullsize/1.jpg" title="Project Name">
+                            <img class="img-fluid" src="/assets/images/portfolio/thumbnails/1.jpg" alt="..." />
+                            <!-- <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Category</div>
+                                <div class="project-name">Project Name</div>
+                            </div> -->
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="/assets/images/portfolio/fullsize/2.jpg" title="Project Name">
+                            <img class="img-fluid" src="/assets/images/portfolio/thumbnails/2.jpg" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="/assets/images/portfolio/fullsize/3.jpg" title="Project Name">
+                            <img class="img-fluid" src="/assets/images/portfolio/thumbnails/3.jpg" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="/assets/images/portfolio/fullsize/4.jpg" title="Project Name">
+                            <img class="img-fluid" src="/assets/images/portfolio/thumbnails/4.jpg" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="/assets/images/portfolio/fullsize/5.jpg" title="Project Name">
+                            <img class="img-fluid" src="/assets/images/portfolio/thumbnails/5.jpg" alt="..." />
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="/assets/images/portfolio/fullsize/6.jpg" title="Project Name">
+                            <img class="img-fluid" src="/assets/images/portfolio/thumbnails/6.jpg" alt="..." />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
 
         <!-- Modal Apply-->
         <div class="modal fade" id="apply" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -264,26 +267,11 @@ else{
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post">
+                    <?php $details = $this->session->userdata('details');?>
+                        <form id="add_product_app" action="/clients/add_application" method="post">
                             <div class="details" id="body-apply">
                                 <div class="row">
                                     <div class="col-sm mt-2" id="product_details">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="col d-inline-block align-top">
-                                                    <img class="show_product img-fluid" src="/assets/images/upload/1667795791productmeter.jpg" alt="">
-                                                </div>
-                                                <div class="col d-inline-block align-top">
-                                                    <h5>Title</h5>
-                                                    <p>Description</p>
-                                                    <div class="form-group">
-                                                        <label for="qty">Qty:</label>
-                                                        <input type="number" id="show_qty" name="qty" class="form-control" value="1" min="1">
-                                                        <label for="total"><strong>Total Amount: 10000</strong></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="col-sm mt-2">
                                         <div class="card">
@@ -296,17 +284,17 @@ else{
                                                 <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>" />
                                                 <div class="form-group">
                                                     <label for="blk">Blk</label>
-                                                    <input type="text" name="blk" class="form-control" placeholder="P BLK LOT House#">
+                                                    <input type="text" name="blk" class="form-control" id="blk" placeholder="P BLK LOT House#" value="<?=$details['blk']?>" required>
                                                     <?php echo form_error('current') ?>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="baranggay">Baranggay</label>
-                                                    <input type="text" name="baranggay" class="form-control" placeholder="Baranggay">
+                                                    <input type="text" name="baranggay" class="form-control" placeholder="Baranggay" value="<?=$details['baranggay']?>" id="baranggay" required>
                                                     <?php echo form_error('new') ?>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="city">City/Municipality</label>
-                                                    <input type="text" name="city" class="form-control" placeholder="City / Municipality">
+                                                    <input type="text" name="city" class="form-control" id="city" placeholder="City / Municipality" value="<?=$details['city']?>" required>
                                                     <?php echo form_error('confirm') ?>
                                                 </div>
                                             </div>
@@ -316,9 +304,11 @@ else{
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary">Apply</button>
+                            <input type="hidden" name="user_id" value="<?=(empty($details['id'])? '':$details['id'])?>">
+                            <button class="btn btn-primary <?=(empty($details['id'])? 'd-none':'')?>">Apply</button>
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>

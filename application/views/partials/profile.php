@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<button id="form-button" type="submit" class="btn btn-primary">Update Profile</button>
 				</form>
 
-				<form id="change_password" action="users/credentials_modification" method="post">
+				<form id="change_password" action="/users/credentials_modification" method="post">
 					
 <?php	if(!$this->session->flashdata('success')){
 		}

@@ -21,37 +21,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
                         <h2><strong>Transaction List</strong></h2>
-                        <a href="/dashboards/add_user" class="btn btn-primary" id="btn-right" tabindex="0" data-toggle="tooltip" data-original-title="Add User" data-placement="left"><i class="mdi mdi-account-multiple-plus"></i></a>
                     </div>
                     <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="datatable" class="table">
-                            <thead>
-                                <tr>
-                                    <th>Full Name</th>
-                                    <th>Email</th>
-                                    <th>User Level</th>
-                                    <th>Status</th>
-                                    <th>Created at</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <div class="hoverable-data-table">
+                            <div id="hoverable-data-table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <table id="datatable" class="table table-hover nowrap dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="hoverable-data-table_info">
+                                    <thead>
+                                        <tr>
+                                            <th>Application ID</th>
+                                            <th>Mode of Payment</th>
+                                            <th>Proof</th>
+                                            <th>Created at</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 <?php                           foreach($datas as $data){
                                 $create = date('m-d-Y', strtotime($data['created_at']));
-?>                                <tr>
-                                    <td><?= $data['first_name'].' '.$data['last_name']?></td>
-                                    <td><?= $data['email']?></td>
-                                    <td><?= ($data['user_level'] === '0' ? 'Admin' : 'User')?></td>
-                                    <td><?= ($data['status'] === '0' ? 'Not Verified' : 'Verified')?></td>
-                                    <td><?= $create?></td>
-                                    <td>
-                                        <a href="/dashboards/delete/<?=$data['id']?>" onclick="return confirm('Are you sure you want to DELETE this?')" class="text-xxsm btn btn-danger" tabindex="0" data-toggle="tooltip" data-original-title="Delete" data-placement="left"><i class="mdi mdi-delete-forever"></i></a>
-                                    </td>
+    ?>                                <tr>
+                                        <td><?= $data['id']?></td>
+                                        <td><?=($data['mode_of_payment'] === '1'? 'Card Payment' : 'Over the Counter')?></td>
+                                        <td>
+<?php                                       if($data['mode_of_payment'] === '1'){
+?>                                              <i class="mdi mdi-credit-card"></i>
+<?php                                       }
+                                            else{                       
+?>                                            <a href="/assets/images/upload/proof/<?=$data['proof']?>" target="_blank" title="<?=$data['proof']?>">
+                                                <img class="img-fluid" style="width: 50px; height:50px;" src="/assets/images/upload/proof/<?=$data['proof']?>" alt="<?=$data['proof']?>" />
+                                            </a>
+<?php                                       }
+?>                                        </td>
+                                        <td><?= $create?></td>
 <?php                           }
-?>                                </tr>
+?>                                    </tr>
                             </tbody>
                         </table>
+                            </div>
                     </div>
                     </div>
                 </div>

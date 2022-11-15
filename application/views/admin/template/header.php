@@ -61,8 +61,7 @@ $error = $this->session->flashdata('input_errors');
           var newimg=document.createElement('img');
           imagediv.innerHTML='';
           newimg.src=image;
-          newimg.width="330";
-          newimg.height="150";
+          newimg.width="150";
           imagediv.appendChild(newimg);
         }
     </script>
