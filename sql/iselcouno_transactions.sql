@@ -26,14 +26,15 @@ CREATE TABLE `transactions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `application_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `status` varchar(255) DEFAULT NULL,
+  `mode_of_payment` varchar(255) DEFAULT NULL,
+  `proof` varchar(255) DEFAULT NULL,
   `created_by` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`,`application_id`,`product_id`,`created_by`),
   KEY `fk_transaction_applications1_idx` (`application_id`,`product_id`,`created_by`),
-  CONSTRAINT `fk_transaction_applications1` FOREIGN KEY (`application_id`, `product_id`, `created_by`) REFERENCES `applications` (`id`, `product_id`, `created_by`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_transaction_applications1` FOREIGN KEY (`application_id`, `product_id`, `created_by`) REFERENCES `applications` (`id`, `product_id`, `created_by`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -45,4 +46,4 @@ CREATE TABLE `transactions` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-08  9:40:57
+-- Dump completed on 2022-11-15 22:08:35

@@ -28,6 +28,9 @@ CREATE TABLE `users` (
   `last_name` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `blk` varchar(255) DEFAULT NULL,
+  `baranggay` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `user_level` varchar(255) DEFAULT '1',
   `vkey` varchar(255) DEFAULT NULL,
@@ -35,7 +38,7 @@ CREATE TABLE `users` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -47,4 +50,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-08  9:40:57
+-- Dump completed on 2022-11-15 22:08:34
