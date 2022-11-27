@@ -239,6 +239,23 @@ class Dashboards extends CI_Controller {
         }
     }
 
+    public function report() 
+    {   
+        $isadmin = $this->session->userdata('auth');
+        if(!$isadmin){
+            redirect('/');
+        }
+        else{
+            $res = $this->dashboard->fetch_all_application();
+            $data = array('datas' => $res);
+            $this->load->view('admin/template/header');
+            $this->load->view('admin/template/sidebar');
+            $this->load->view('admin/template/topnavbar');
+            $this->load->view('admin/reports', $data);
+            $this->load->view('admin/template/footer');
+        }
+    }
+
     
     public function cancel($id){
         $this->application->cancel_app($id);
@@ -254,7 +271,9 @@ class Dashboards extends CI_Controller {
         }
         else{
             $res = $this->dashboard->fetch_application_id($id);
-            $data = array('application_details' => $res);
+            $req = $this->dashboard->fetch_req($id);
+            // var_dump($id);
+            $data = array('application_details' => $res, 'requirements'=>$req);
             $this->load->view('admin/template/header');
             $this->load->view('admin/template/sidebar');
             $this->load->view('admin/template/topnavbar');
@@ -313,6 +332,24 @@ class Dashboards extends CI_Controller {
         $this->load->view('admin/edit_product', $data);
         $this->load->view('admin/template/footer');
     }
+
+    public function export_backup(){
+        // Load the DB utility class
+         $this->load->dbutil();
+         
+         // Backup your entire database and assign it to a variable
+         $backup = $this->dbutil->backup();
+         
+         // Load the file helper and write the file to your server
+         $this->load->helper('file');
+         write_file(VIEWPATH.'/assets/files/db_backup/iselco_'.date('dmY').'_backup.gz', $backup);
+         
+        //  $this->session->set_userdata('activity', 'export database backup');
+        //  $this->activity->log($this->session->userdata('user_id'));
+         // Load the download helper and send the file to your desktop
+         $this->load->helper('download');
+         force_download('iselco_'.date('dmY').'_backup.gz', $backup);
+     }
  
 
 }

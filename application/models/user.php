@@ -11,8 +11,8 @@ class User extends CI_Model {
 
     public function get_details_by_email($email)
     { 
-        $query = "SELECT id, blk, baranggay, city FROM users WHERE email=?";
-        return $this->db->query($query, $this->security->xss_clean($email))->result_array()[0];
+        $query = "SELECT id, first_name, last_name, blk, baranggay, city FROM users WHERE email=?";
+        return $this->db->query($query, $this->security->xss_clean($email))->result_array();
     }
 
     public function check_mail($form_data)

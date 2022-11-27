@@ -99,6 +99,9 @@ $new_total = $details['qty'] * $details['amount'];
                                         <input type="total_amount" class="form-control" id="total_amount" name="total_amount"  value="<?= number_format($new_total,2)?>"readonly>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <a href="/clients/cancel_application/<?=$details['id']?>" class="btn btn-danger w-100" onclick="return confirm('Are you sure you want to CANCEL this application?')">Cancel Application</a>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <h5>Payment Method</h5>

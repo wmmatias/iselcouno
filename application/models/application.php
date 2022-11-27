@@ -29,6 +29,7 @@ class Application extends CI_Model {
         $this->form_validation->set_rules('city', 'City', 'required');     
         if(!$this->form_validation->run()) {
             return validation_errors();
+            
         }
         else {
             return 'success';
@@ -38,9 +39,11 @@ class Application extends CI_Model {
 
     public function create_new($form_data)
     { 
-        $query = "INSERT INTO applications (product_id, qty, blk, baranggay, city, created_by, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?)";
+        $query = "INSERT INTO applications (product_id, connection_type, building_type, qty, blk, baranggay, city, created_by, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?)";
         $values = array(
             $this->security->xss_clean($form_data['prod_id']), 
+            $this->security->xss_clean($form_data['connection']), 
+            $this->security->xss_clean($form_data['building']), 
             $this->security->xss_clean($form_data['qty']), 
             $this->security->xss_clean($form_data['blk']), 
             $this->security->xss_clean($form_data['baranggay']), 
@@ -48,9 +51,19 @@ class Application extends CI_Model {
             $this->security->xss_clean($form_data["user_id"]),
             $this->security->xss_clean(date("Y-m-d H:i:s")),
             $this->security->xss_clean(date("Y-m-d H:i:s")));
-        return $this->db->query($query, $values);
+        $this->db->query($query, $values);
+        return $this->db->insert_id();
     }
 
+    public function requirements($app_id,$image){
+        $query = "INSERT INTO requirements (application_id, name, created_at, updated_at) VALUES (?,?,?,?)";
+        $values = array( 
+            $this->security->xss_clean($app_id), 
+            $this->security->xss_clean($image),
+            $this->security->xss_clean(date("Y-m-d H:i:s")),
+            $this->security->xss_clean(date("Y-m-d H:i:s")));
+        return $this->db->query($query, $values);
+    }
     public function cancel_app($id){
         $status = '3';
         return $this->db->query("UPDATE applications SET status = ?,  updated_at = ? WHERE id = ?", 
@@ -103,7 +116,7 @@ class Application extends CI_Model {
 
     public function paid(){
         $app_id = $this->session->userdata('app_id');
-        $status = '1.1';
+        $status = '0.1';
         return $this->db->query("UPDATE applications SET status = ?, updated_at = ? WHERE id = ?", 
         array(
             $this->security->xss_clean($status),
@@ -112,12 +125,21 @@ class Application extends CI_Model {
     }
 
     public function counter_paid($form_data){
-        $status = '1.1';
+        $status = '0.1';
         return $this->db->query("UPDATE applications SET status = ?, updated_at = ? WHERE id = ?", 
         array(
             $this->security->xss_clean($status),
             $this->security->xss_clean(date("Y-m-d H:i:s")),
             $this->security->xss_clean($form_data['app_id'])));
+    }
+
+    public function delete($id){
+        $this->db->query("DELETE FROM applications WHERE id = ?", 
+        array(
+            $this->security->xss_clean($id)));
+        $this->db->query("DELETE FROM requirements WHERE application_id = ?", 
+        array(
+            $this->security->xss_clean($id)));
     }
 
 }

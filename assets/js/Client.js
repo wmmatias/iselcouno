@@ -1,7 +1,5 @@
 $(document).ready(function(){
-    $(document).on('change', '#show_qty', function(){
-        console.log('you change me');
-    });
+
     $('#profile').on('show.bs.modal', function (e) {
         $('form#form-input input').attr('readonly',true);
         $('form #form-button').attr('disabled',true);
@@ -12,6 +10,10 @@ $(document).ready(function(){
         $('#blk').attr('readonly',true);
         $('#baranggay').attr('readonly',true);
         $('#city').attr('readonly',true);
+        $('#firstname').attr('readonly',true);
+        $('#lastname').attr('readonly',true);
+        $('#ptc').attr('disabled', true)
+        $('#ptc1').hide();
     });
    
 
@@ -20,10 +22,14 @@ $(document).ready(function(){
             $('#blk').attr('readonly',false);
             $('#baranggay').attr('readonly',false);
             $('#city').attr('readonly',false);
+            $('#firstname').attr('readonly',false);
+            $('#lastname').attr('readonly',false);
         }else{
             $('#blk').attr('readonly',true);
             $('#baranggay').attr('readonly',true);
             $('#city').attr('readonly',true);
+            $('#firstname').attr('readonly',true);
+            $('#lastname').attr('readonly',true);
         }
     });
 
@@ -66,6 +72,34 @@ $(document).ready(function(){
             }
         }
     });
+
+    // $('#permanent').change(function(){
+    //     if($('#permanent:checked').length){
+    //         $('#temporary').attr('disabled', true)
+    //         $('#ptc').attr('disabled', true)
+    //         $('#cfei').attr('disabled', false)
+    //         $('#bfp').attr('disabled', false)
+    //         $('#ptc1').hide();
+    //         $('#cfei1').show();
+    //         $('#bfp1').show();
+    //     }else{
+    //         $('#temporary').attr('disabled', false)
+    //     }
+    // });
+
+    // $('#temporary').change(function(){
+    //     if($('#temporary:checked').length){
+    //         $('#permanent').attr('disabled', true)
+    //         $('#ptc1').show();
+    //         $('#cfei1').hide();
+    //         $('#bfp1').hide();
+    //         $('#cfei').attr('disabled', true)
+    //         $('#bfp').attr('disabled', true)
+    //         $('#ptc').attr('disabled', false)
+    //     }else{
+    //         $('#permanent').attr('disabled', false)
+    //     }
+    // });
 
     $.get('/clients/index_html', function(res) {
         $('#details').html(res);

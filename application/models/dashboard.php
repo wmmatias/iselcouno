@@ -58,17 +58,23 @@ class Dashboard extends CI_Model {
     public function create_product($form_data, $filename)
     {
         $id = $this->session->userdata('user_id');
-        $query = "INSERT INTO products (name, description, amount, image, created_at, updated_at) VALUES (?,?,?,?,?,?)";
+        $query = "INSERT INTO products (name, description, amount, image, created_by, created_at, updated_at) VALUES (?,?,?,?,?,?,?)";
         $values = array(
             $this->security->xss_clean($form_data['name']), 
             $this->security->xss_clean($form_data['description']), 
             $this->security->xss_clean($form_data['amount']), 
             $this->security->xss_clean($filename), 
+            $this->security->xss_clean($id), 
             $this->security->xss_clean(date("Y-m-d, H:i:s")),
             $this->security->xss_clean(date("Y-m-d, H:i:s"))
         ); 
         return $this->db->query($query, $values);
 
+    }
+
+    public function fetch_req($id){
+        $query = "SELECT * FROM requirements WHERE application_id=?";
+        return $this->db->query($query, $this->security->xss_clean($id))->result_array();
     }
 
     public function update_product($form_data, $filename)

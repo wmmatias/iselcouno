@@ -117,7 +117,6 @@ class Clients extends CI_Controller {
     }
 
     public function add_application(){
-        // var_dump($_POST);
         $form_data = $this->input->post();
         $result = $this->application->validate_add_prod();
         if($result!= 'success')
@@ -127,11 +126,47 @@ class Clients extends CI_Controller {
             $this->load->view('client/index');
             $this->load->view('templates/footer');
         }
+        elseif(empty($_FILES['files']['name'])){
+            $this->session->set_flashdata('form_error', 'Something went wrong! requirement must have a value please secure your requirements');
+            $this->load->view('templates/header');
+            $this->load->view('client/index');
+            $this->load->view('templates/footer');
+        }
         else
         {
-            $this->application->create_new($form_data);
-            $this->session->set_flashdata('success', 'Your product has beed add and subject for approval visit your <a href="#" data-bs-toggle="modal" data-bs-target="#application">Application</a> tab to check the status.');
-            redirect('/');
+            $app_id = $this->application->create_new($form_data);
+            $data = [];
+   
+            $count = count($_FILES['files']['name']);
+          
+            for($i=0;$i<$count;$i++){
+          
+              if(!empty($_FILES['files']['name'][$i])){
+          
+                $image = $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                $new_name = time()."req".$image;
+                $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['files']['size'][$i];
+        
+                $config['upload_path'] = './assets/images/upload/requirements/'; 
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['max_size'] = '5000';
+                $config['file_name'] = $new_name;
+         
+                $this->upload->initialize($config);
+                if($this->upload->do_upload('file')){
+                    $this->application->requirements($app_id,$new_name);
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+                    $data['totalFiles'][] = $filename;
+                }
+              }
+            }
+            // $this->session->set_flashdata('success', 'Your product has beed add and subject for approval visit your <a href="#" data-bs-toggle="modal" data-bs-target="#application">Application</a> tab to check the status.');
+            // redirect('/');
+            $this->check_out($app_id);
         }
     }
 
@@ -139,6 +174,12 @@ class Clients extends CI_Controller {
         $res = $this->dashboard->fetch_application_id($id);
         $data = array('details'=>$res);
         $this->load->view('client/check_out', $data);
+    }
+
+    public function cancel_application($id){
+        $this->application->delete($id);
+        $this->session->set_flashdata('success', 'Your application has beed cancel!');
+        redirect('/');
     }
  
 }

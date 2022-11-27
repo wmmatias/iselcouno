@@ -29,7 +29,10 @@ $new_step = $application_details['step'] + 1;
                         <div class="col-md-4 mb-3">
                                 <h3 class="text-dark">Status:
 <?php                               if($application_details['status'] === '0'){
-?>                                      New
+?>                                      New Pending Payment
+<?php                               }
+                                    elseif($application_details['status'] === '0.1'){
+?>                                      New Paid On Review
 <?php                               }
                                     elseif($application_details['status'] === '1'){
 ?>                                      On Process
@@ -77,13 +80,13 @@ $new_step = $application_details['step'] + 1;
                                 <hr>
                                 <ul>
                                     <li>
-                                        <p class="<?=($application_details['step'] >='1' ? 'text-dark' : '')?>"><i class="<?=($application_details['step'] >='1' ? 'mdi mdi-check-circle text-success' : 'mdi mdi-checkbox-blank-circle')?>"></i> Step 1: Application</p>
+                                        <p class="<?=($application_details['step'] >='1' ? 'text-dark' : '')?>"><i class="<?=($application_details['step'] >='1' ? 'mdi mdi-check-circle text-success' : 'mdi mdi-checkbox-blank-circle')?>"></i> Step 1: Payment<small>(Need to pay)</small></p>
                                     </li>
                                     <li>
-                                        <p class="<?=($application_details['step'] >='2' ? 'text-dark' : '')?>"><i class="<?=($application_details['step'] >='2' ? 'mdi mdi-check-circle text-success' : 'mdi mdi-checkbox-blank-circle')?>"></i> Step 2: Scheduling of Inspection</p>
+                                        <p class="<?=($application_details['step'] >='2' ? 'text-dark' : '')?>"><i class="<?=($application_details['step'] >='2' ? 'mdi mdi-check-circle text-success' : 'mdi mdi-checkbox-blank-circle')?>"></i> Step 2: Application Evaluation & Verification</p>
                                     </li>
                                     <li>
-                                        <p class="<?=($application_details['step'] >='3' ? 'text-dark' : '')?>"><i class="<?=($application_details['step'] >='3' ? 'mdi mdi-check-circle text-success' : 'mdi mdi-checkbox-blank-circle')?>"></i> Step 3: Inspection Passed <small>(Need to pay)</small></p>
+                                        <p class="<?=($application_details['step'] >='3' ? 'text-dark' : '')?>"><i class="<?=($application_details['step'] >='3' ? 'mdi mdi-check-circle text-success' : 'mdi mdi-checkbox-blank-circle')?>"></i> Step 3: Scheduling of Inspection </p>
                                     </li>
                                     <li>
                                         <p class="<?=($application_details['step'] >='4' ? 'text-dark' : '')?>"><i class="<?=($application_details['step']  >='4' ? 'mdi mdi-check-circle text-success' : 'mdi mdi-checkbox-blank-circle')?>"></i> Step 4: Calibration and Installation</p>
@@ -111,6 +114,18 @@ $new_step = $application_details['step'] + 1;
                                     <p class="text-dark">Qty: <?=$application_details['qty']?></p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <p>Requirements</p>
+                                <hr>
+<?php                           foreach($requirements as $data){
+?>                                
+                                <a class="portfolio-box" href="/assets/images/upload/requirements/<?=$data['name']?>" title="<?=$data['name']?>" target="_blank">
+                                    <img class="img-fluid" src="/assets/images/upload/requirements/<?=$data['name']?>" alt="<?=$data['name']?>" style="width: 150px;"/>
+                                </a>
+<?php                           }
+?>                            </div>
                         </div>
                     </div>
                 </div>

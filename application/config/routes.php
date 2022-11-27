@@ -75,6 +75,7 @@ $route['dashboards/view/(:any)'] = 'dashboards/application_view/$1';
 $route['dashboards/steps_update'] = 'dashboards/steps_update';
 
 $route['clients/send_verification'] = 'clients/send';
+$route['clients/cancel_application/(:any)'] = 'clients/cancel_application/$1';
 $route['clients/check_out/(:any)'] = 'clients/check_out/$1';
 
 $route['payments/success'] = 'payments/success';

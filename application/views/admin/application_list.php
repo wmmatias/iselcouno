@@ -42,18 +42,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <td><?= $data['first_name'].' '.$data['last_name']?></td>
                                         <td><?= $data['blk'].' '.$data['baranggay'].' '.$data['city']?></td>
                                         <td>
-<?php                                       if($data['status'] === '0'){
-?>                                              New
-<?php                                       }
-                                            elseif($data['status'] === '1' || $data['status'] === '1.1'){
-?>                                              On Process 
-<?php                                           if($data['step'] === '3' && $data['status'] === '1'){
-?>                                                  <p class="badge bg-info <?=($data['status'] === '3' ? 'd-none':'')?>">To Pay</p>    
+<?php                                       if($data['status'] === '0'  || $data['status'] === '0.1'){
+?>                                             New Pending Payment
+<?php                                           if($data['step'] === '1' && $data['status'] === '0'){
+?>                                                  <p class="badge bg-info <?=($data['status'] === '0' ? '':'d-none')?>">To Pay</p>    
 <?php                                           }  
-                                                else if($data['step'] === '3' && $data['status'] === '1.1'){     
-?>                                                  <p class="badge bg-success <?=($data['status'] === '3' ? 'd-none':'')?>">Paid</p>
+                                                else if($data['step'] === '1' && $data['status'] === '0.1'){     
+?>                                                  <p class="badge bg-success <?=($data['status'] === '0.1' ? '':'d-none')?>">Paid</p>
 <?php                                           }
                                             }
+                                            elseif($data['status'] === '1'){
+?>                                              On Process 
+<?php                                            }
                                             elseif($data['status'] === '2'){
 ?>                                              Done
 <?php                                       }
@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <td><?= $create?></td>
                                         <td>
                                             <a href="/dashboards/view/<?=$data['id']?>" class="text-xxsm btn btn-primary" tabindex="0" data-toggle="tooltip" data-original-title="view" data-placement="left"><i class="mdi mdi-eye"></i></a>
-                                            <a href="/dashboards/cancel/<?=$data['id']?>" onclick="return confirm('Are you sure you want to CANCEL this?')" class="text-xxsm btn btn-danger <?=($data['step'] >= 3 ? 'd-none' : '')?>" tabindex="0" data-toggle="tooltip" data-original-title="cancel" data-placement="left"><i class="mdi mdi-cancel"></i></a>
+                                            <a href="/dashboards/cancel/<?=$data['id']?>" onclick="return confirm('Are you sure you want to CANCEL this?')" class="text-xxsm btn btn-danger <?=($data['status'] <= '0' ? '' : 'd-none')?>" tabindex="0" data-toggle="tooltip" data-original-title="cancel" data-placement="left"><i class="mdi mdi-cancel"></i></a>
                                         </td>
 <?php                           }
 ?>                                    </tr>

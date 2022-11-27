@@ -23,16 +23,29 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `amount` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`,`created_by`),
+  KEY `fk_products_users1_idx` (`created_by`),
+  CONSTRAINT `fk_products_users1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products`
+--
+
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (13,'Electric Meter','Commerical Electric Meter','1500','1669476670productmeter.jpg',1,'2022-11-26 15:31:10','2022-11-26 15:31:10');
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -43,4 +56,4 @@ CREATE TABLE `products` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-15 22:08:34
+-- Dump completed on 2022-11-27  9:30:26

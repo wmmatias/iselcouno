@@ -44,18 +44,18 @@ $status = $this->session->userdata('status');
                 data = [
                     {
                         id: 1,
-                        title: 'Application',
-                        description: 'Verify your account! apply a product you want then your application is subject for evaluation.'
+                        title: 'Payment',
+                        description: 'Verify your account! pay your application! you can pay through bank or over the counter. if you wish to use bank you may pay in through pay now button in your application.'
                     },
                     {
                         id: 2,
-                        title: 'Scheduling of Inspection',
-                        description: 'If your application passed in evaluation you are subject for inspection keep your line open and assist us in your home/establishment for inspection.'
+                        title: 'Application Evaluation & Verification',
+                        description: 'On going review and verify your application requirements'
                     },
                     {
                         id: 3,
                         title: 'Inspection Passed',
-                        description: 'You need to pay your application! you can pay through bank or over the counter. if you wish to use bank you may pay in through pay now button in your application.'
+                        description: 'If your application passed in evaluation you are subject for inspection keep your line open and assist us in your home/establishment for inspection.'
                     },
                     {
                         id: 4,
@@ -99,7 +99,7 @@ $status = $this->session->userdata('status');
                 console.log(response);
                 let details = response[0];
                 container = document.getElementById('product_details');
-                container.innerHTML+='<div class="card"><div class="card-body"><div class="col d-inline-block align-top"><img class="show_product img-fluid border me-2" src="/assets/images/upload/'+ details.image +'" alt=""></div><div class="col d-inline-block"><h5>'+ details.name +'</h5><p>'+ details.description +'</p><div class="form-group"><label for="qty">Qty:</label><input type="hidden" name="prod_id" class="form-control" value="'+ details.id +'"><input type="number" id="show_qty" name="qty" class="form-control" value="1" min="1" ><label for="total" id="total"><strong></strong></label></div></div></div></div>';
+                container.innerHTML+='<div class="card border-0"><div class="card-body"><div class="col d-inline-block align-top"><img class="show_product img-fluid border me-2" src="/assets/images/upload/'+ details.image +'" alt=""></div><div class="col d-inline-block"><h5>'+ details.name +'</h5><p>'+ details.description +'</p><div class="form-group"><label for="qty">Qty:</label><input type="hidden" name="prod_id" class="form-control" value="'+ details.id +'"><input type="number" id="show_qty" name="qty" class="form-control" value="1" min="1" ><label for="total" id="total"><strong></strong></label></div></div></div><p><p class="d-inline-block align-top">Connection Details</p><div class="form-group"><label for="connection">Connection Type</label><select name="connection" class="form-control"><option value="1">Permanent</option><option value="2">Temporary</option></select></div><div class="form-group"><div class="form-group"><label for="image">Building Type</label><select name="building" class="form-control"><option value="1">Commercial</option><option value="2">Residential</option></select></div><div class="form-group"><label for="image">Requirements <i><small>can accept multiple file <i class="fas fa-circle-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Please upload all required requirements here"></i></small></i></label><input type="file" name="files[]" class="form-control" id="image" accept=".jpg, .jpeg, .png" multiple required></div></p></div>';
                 $("#apply").modal('show'); 
                  
             },
@@ -115,14 +115,16 @@ $status = $this->session->userdata('status');
         <nav class="top-nav navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
                 <!-- <a class="navbar-brand" href="#page-top"><img src="/assets/images/logo.jpg" style="width: 150px;" class="img-fluid" alt="logo"></a> -->
-                <a class="navbar-brand" href="#page-top">Iselco Uno</a>
+                <a class="navbar-brand" href="#page-top"><img src="/assets/images/logo2.png" style="width: 45px;" class="img-fluid" alt="logo"> Iselco Uno</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#requirements">Requirements</a></li>
 <?php                   if(!$is_login){
-?>                        <li class="nav-item"><a class="nav-link" href="#applicationForm">Apply Online</a></li>
+?>                        
+                        <li class="nav-item"><a class="nav-link" href="#applicationForm">Apply Online</a></li>
 <?php
                         }
                         else{
@@ -188,9 +190,9 @@ $status = $this->session->userdata('status');
                                         <td><?=$detail['blk'].' '.$detail['baranggay'].' '.$detail['city']?></td>
                                         <td>
 <?php                                       if($detail['status'] === '0'){
-?>                                              <p class="badge bg-primary">New</p>
+?>                                              <p class="badge bg-danger">Pending</p> 
 <?php                                       }
-                                            elseif($detail['status'] === '1' || $detail['status'] === '1.1'){
+                                            elseif($detail['status'] === '1'){
 ?>                                              <p class="badge bg-info">On Process</p>
 <?php                                       }
                                             elseif($detail['status'] === '2'){
@@ -199,11 +201,16 @@ $status = $this->session->userdata('status');
                                             elseif($detail['status'] === '3'){
 ?>                                              <p class="badge bg-danger">Cancelled</p>
 <?php                                       }
-                                            if($detail['step'] === '3' && $detail['status'] === '1'){
-?>                                              <p class="badge bg-warning <?=($detail['status'] === '3' ? 'd-none':'')?>"> <a href="/clients/check_out/<?=$detail['id']?>">Pay Now</a></p>
+                                            if($detail['status'] === '0'){
+?>                                              <p class="badge bg-warning <?=($detail['status'] === '0' ? '':'d-none')?>"> <a href="/clients/check_out/<?=$detail['id']?>">Pay Now</a></p>
 <?php                                       }
-                                            else if($detail['step'] === '3' && $detail['status'] === '1.1'){
-?>                                              <p class="badge bg-success <?=($detail['status'] === '3' ? 'd-none':'')?>">Paid</p>
+                                            else if($detail['status'] === '0.1'){
+?>                                              <p class="badge bg-danger">Pending</p> 
+                                                <p class="badge bg-success <?=($detail['status'] != '0' ? '':'d-none')?>">Paid</p>
+<?php                                       }
+                                            else if($detail['status'] === '1'){
+?>                                              
+                                                <p class="badge bg-success <?=($detail['status'] === '1' ? '':'d-none')?>">Paid</p>
 <?php                                       }
 ?>                                        </td>
                                         <td><?=$create?></td>

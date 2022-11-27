@@ -40,6 +40,16 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'WILARD','MATIAS','09190790221','admin@gmail.com',NULL,NULL,NULL,'161ebd7d45089b3446ee4e0d86dbcf92','0','1','1',NULL,'2022-11-13 17:13:08'),(55,'Eduardo','Agrons','09129019291','lard0595@gmail.com','P4 G Silang ','Sta Maria','Cauayan','499106a5ec781d334c8f071b5b36c2e7','1','2f4a117552caeb1b8044d63e94c99115','1','2022-11-15 13:01:54','2022-11-15 13:08:32');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +60,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-15 22:08:34
+-- Dump completed on 2022-11-27  9:30:27

@@ -94,46 +94,46 @@ else{
                 <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
                     <div class="col-lg-6">
                         <form action="/users/application" method="post">
-                            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>" />
+                            <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>"/>
                                 
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="firstname" id="firstname" value="<?php echo set_value('firstname'); ?>" type="text"/>
+                                <input class="form-control" name="firstname" id="firstname" value="<?php echo set_value('firstname'); ?>" type="text" minlength="2" pattern="^[a-zA-Z\s]+" title="Numbers are not allowed this field" required/>
                                 <label for="firstname">First name</label>
                                 <?php echo form_error('firstname') ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="lastname" value="<?php echo set_value('lastname'); ?>" id="lastname" type="text"/>
+                                <input class="form-control" name="lastname" value="<?php echo set_value('lastname'); ?>" id="lastname" type="text" minlength="2" pattern="^[a-zA-Z\s]+" title="Numbers are not allowed this field" required/>
                                 <label for="lastname">Last name</label>
                                 <?php echo form_error('lastname') ?>
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="email" id="email" type="email" value="<?php echo set_value('email'); ?>"/>
+                                <input class="form-control" name="email" id="email" type="email" value="<?php echo set_value('email'); ?>" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" title = "Please input a valid email format eg. iselco@gmail.com" required/>
                                 <label for="email">Email address</label>
                                 <?php echo form_error('email') ?>
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="phone" id="phone" value="<?php echo set_value('phone'); ?>" />
+                                <input class="form-control" name="phone" id="phone" value="<?php echo set_value('phone'); ?>" pattern="^[+]?[\d]+([\-][\d]+)*\d$" minlength="11" title="Must start with [09 / +63] and at least 11 digit number to 13 with area code" required/>
                                 <label for="phone">Phone number</label>
                                 <?php echo form_error('phone') ?>
                             </div>
                             <hr class="divider" />
                             <p class="text-muted mb-5 text-center">Complete Address</p>
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="street" value="<?php echo set_value('street'); ?>" id="street" type="text"/>
-                                <label for="street">Blk/St/Subdivision</label>
-                                <?php echo form_error('street') ?>
+                                <input class="form-control" name="city" value="<?php echo set_value('city'); ?>" id="city" type="text" required/>
+                                <label for="city">City</label>
+                                <?php echo form_error('city') ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="baranggay" value="<?php echo set_value('baranggay'); ?>" id="baranggay" type="text"/>
+                                <input class="form-control" name="baranggay" value="<?php echo set_value('baranggay'); ?>" id="baranggay" type="text" required/>
                                 <label for="baranggay">Baranggay</label>
                                 <?php echo form_error('baranggay') ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="city" value="<?php echo set_value('city'); ?>" id="city" type="text"/>
-                                <label for="city">City</label>
-                                <?php echo form_error('city') ?>
+                                <input class="form-control" name="street" value="<?php echo set_value('street'); ?>" id="street" type="text" required/>
+                                <label for="street">Blk/St/Subdivision</label>
+                                <?php echo form_error('street') ?>
                             </div>
                             <div class="d-grid">
                                 <button class="btn btn-primary btn-xl" type="submit">Submit Application</button>
@@ -144,6 +144,38 @@ else{
                 </div>
             </div>
         </section>       
+         <!-- Call to action-->
+ <section class="page-section bg-dark text-white" id="requirements">
+            <div class="container px-4 px-lg-5">
+                <h2 class="mb-4 text-center">List of Requirement</h2>
+                <p class="text-center">Applicant's should undergo pre-membership seminar</p>
+                <div class="row">
+                    <div class="col">
+                        <strong class="text-start">For Permanent Connection</strong>
+                        <ul class="text-start">
+                            <li>Approved Electric Plan</li>
+                            <ul>
+                                <li>Short Circuit Calculation</li>
+                                <li>Voltage Drop Calculation</li>
+                            </ul>
+                            <li>Bureau of Fire Protection Permit</li>
+                            <li>Certificate of Final Electrical Inspection (CFEI)</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                    <strong class="text-start">For Temporary Connection / Special Light Bill</strong>
+                        <ul class="text-start">
+                            <li>Approved Electric Plan</li>
+                            <ul>
+                                <li>Short Circuit Calculation</li>
+                                <li>Voltage Drop Calculation</li>
+                            </ul>
+                            <li>Permit for Temporary Connection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 <?php   }
         else{
 ?>        <section class="page-product" id="products">
@@ -257,7 +289,7 @@ else{
             </div>
         </div>
        
-
+                  
         <!-- Modal Apply-->
         <div class="modal fade" id="apply" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
@@ -267,35 +299,48 @@ else{
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <?php $details = $this->session->userdata('details');?>
-                        <form id="add_product_app" action="/clients/add_application" method="post">
+                    <?php $details = $this->session->userdata('details'); 
+                    // var_dump($details);
+                    ?>
+                        <form id="add_product_app" action="/clients/add_application" method="post"  enctype="multipart/form-data">
                             <div class="details" id="body-apply">
                                 <div class="row">
                                     <div class="col-sm mt-2" id="product_details">
                                     </div>
                                     <div class="col-sm mt-2">
-                                        <div class="card">
+                                        <div class="card border-0">
                                             <div class="card-body">
                                                 <p><strong>Applied for?</strong></p> 
-                                                <div class="form-check form-check-inline">
+                                                <p class="d-inline-block align-top">Applicant Details</p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <div class="form-check form-check-inline d-inline-block align-top">
                                                     <input class="form-check-input" type="checkbox" id="new_address" name="new" value="new">
-                                                    <label class="form-check-label" for="new_address">New Address</label>
+                                                    <label class="form-check-label" for="new_address">Its not you?</label>
                                                 </div>
                                                 <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>" />
                                                 <div class="form-group">
-                                                    <label for="blk">Blk</label>
-                                                    <input type="text" name="blk" class="form-control" id="blk" placeholder="P BLK LOT House#" value="<?=$details['blk']?>" required>
-                                                    <?php echo form_error('current') ?>
+                                                    <label for="fullname">First Name</label>
+                                                    <input type="text" name="firstname" class="form-control" id="firstname" placeholder="First Name" value="<?=$details[0]['first_name']?>" required>
+                                                    <?php echo form_error('firstname') ?>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="baranggay">Baranggay</label>
-                                                    <input type="text" name="baranggay" class="form-control" placeholder="Baranggay" value="<?=$details['baranggay']?>" id="baranggay" required>
-                                                    <?php echo form_error('new') ?>
+                                                    <label for="lastname">Last Name</label>
+                                                    <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Last Name" value="<?=$details[0]['last_name']?>" required>
+                                                    <?php echo form_error('lastname') ?>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="city">City/Municipality</label>
-                                                    <input type="text" name="city" class="form-control" id="city" placeholder="City / Municipality" value="<?=$details['city']?>" required>
+                                                    <input type="text" name="city" class="form-control" id="city" placeholder="City / Municipality" value="<?=$details[0]['city']?>" required>
                                                     <?php echo form_error('confirm') ?>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="baranggay">Baranggay</label>
+                                                    <input type="text" name="baranggay" class="form-control" placeholder="Baranggay" value="<?=$details[0]['baranggay']?>" id="baranggay" required>
+                                                    <?php echo form_error('new') ?>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="blk">Blk</label>
+                                                    <input type="text" name="blk" class="form-control" id="blk" placeholder="P BLK LOT House#" value="<?=$details[0]['blk']?>" required>
+                                                    <?php echo form_error('current') ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -304,8 +349,8 @@ else{
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" name="user_id" value="<?=(empty($details['id'])? '':$details['id'])?>">
-                            <button class="btn btn-primary <?=(empty($details['id'])? 'd-none':'')?>">Apply</button>
+                            <input type="hidden" name="user_id" value="<?=(empty($details[0]['id'])? '':$details[0]['id'])?>">
+                            <button class="btn btn-primary <?=(empty($details[0]['id'])? 'd-none':'')?>">Apply</button>
                         </div>
                     </form>
                     

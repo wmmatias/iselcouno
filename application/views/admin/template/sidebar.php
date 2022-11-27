@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- Aplication Brand -->
             <div class="app-brand">
               <a href="/" title="Iselco-Uno">
-                <img src="/assets/images/logo.jpg" alt="Iselco Logo">
+                <img src="/assets/images/logo.png" alt="Iselco Logo">
               </a>
             </div>
             <!-- begin sidebar scrollbar -->
@@ -56,6 +56,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <li class="">
                         <a class="sidenav-item-link" href="/dashboards/transaction_list">
                           <span class="nav-text">Transaction</span>
+                        </a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+                <li class="has-sub ">
+                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#report"
+                    aria-expanded="false" aria-controls="report">
+                    <i class="mdi mdi-chart-bar"></i>
+                    <span class="nav-text">Reports/Backup</span> <b class="caret"></b>
+                  </a>
+
+                  <ul class="collapse " id="report" data-parent="#sidebar-menu">
+                    <div class="sub-menu">
+                      <li class="">
+                        <a class="sidenav-item-link" href="/dashboards/report">
+                          <span class="nav-text">Reports</span>
+                        </a>
+                      </li>
+                      <li class="">
+                        <a class="sidenav-item-link" href="/dashboards/export_backup">
+                          <span class="nav-text">Backup</span>
                         </a>
                       </li>
                     </div>
