@@ -99,7 +99,7 @@ $new_step = $application_details['step'] + 1;
                                     <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>" />
                                     <input type="hidden" name="app_id" value="<?=$application_details['id']?>">
                                     <input type="hidden" name="new_step" value="<?=$new_step?>">
-                                    <button class="btn btn-success mt-5 <?=($application_details['status'] === '3' ? 'd-none' : '')?>">Next Step</button>
+                                    <button class="btn btn-success mt-5 <?=($application_details['status'] === '3' || $new_step > 5 ? 'd-none' : '')?>">Next Step</button>
                                 </form>
                             </div>
                             <div class="col-md mb-3">

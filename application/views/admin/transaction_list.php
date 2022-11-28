@@ -39,15 +39,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 $create = date('m-d-Y', strtotime($data['created_at']));
     ?>                                <tr>
                                         <td><?= $data['id']?></td>
-                                        <td><?=($data['mode_of_payment'] === '1'? 'Card Payment' : 'Over the Counter')?></td>
+                                        <td><?=($data['mode_of_payment'] === '1'? 'Card Payment' : ($data['mode_of_payment'] === '3'? 'Gcash' :'Over the Counter'))?></td>
                                         <td>
 <?php                                       if($data['mode_of_payment'] === '1'){
 ?>                                              <i class="mdi mdi-credit-card"></i>
 <?php                                       }
                                             else{                       
 ?>                                            <a href="/assets/images/upload/proof/<?=$data['proof']?>" target="_blank" title="<?=$data['proof']?>">
-                                                <img class="img-fluid" style="width: 50px; height:50px;" src="/assets/images/upload/proof/<?=$data['proof']?>" alt="<?=$data['proof']?>" />
+                                                <img class="img-fluid <?=($data['mode_of_payment'] === '3'? 'd-none' : '')?>" style="width: 50px; height:50px;" src="/assets/images/upload/proof/<?=$data['proof']?>" alt="<?=$data['proof']?>" />
                                             </a>
+                                            <p class="<?=($data['mode_of_payment'] != '3'? 'd-none' : '')?>">Reference #: <?=$data['proof']?></p>
 <?php                                       }
 ?>                                        </td>
                                         <td><?= $create?></td>

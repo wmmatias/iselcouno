@@ -248,10 +248,72 @@ class Dashboards extends CI_Controller {
         else{
             $res = $this->dashboard->fetch_all_application();
             $data = array('datas' => $res);
+
+            $dchart = $this->application->daily_chart();
+            $ychart = $this->application->ydaily_chart();
+            $wchart = $this->application->weekly_chart();
+            $mchart = $this->application->monthly_chart();
+            $chart = array('dchart'=>$dchart, 'ychart'=>$ychart, 'wchart'=>$wchart, 'mchart'=>$mchart);
+
             $this->load->view('admin/template/header');
             $this->load->view('admin/template/sidebar');
             $this->load->view('admin/template/topnavbar');
             $this->load->view('admin/reports', $data);
+            $this->load->view('admin/template/footer', $chart);
+        }
+    }
+
+    public function dprint() 
+    {   
+        $isadmin = $this->session->userdata('auth');
+        if(!$isadmin){
+            redirect('/');
+        }
+        else{
+            $res = $this->application->daily_print();
+            $total = $this->application->daily_total();
+            $data = array('daily' => $res, 'total'=>$total);
+            $this->load->view('admin/template/header');
+            $this->load->view('admin/template/sidebar');
+            $this->load->view('admin/template/topnavbar');
+            $this->load->view('admin/preview_ddata', $data);
+            $this->load->view('admin/template/footer');
+        }
+    }
+
+    
+    public function wprint() 
+    {   
+        $isadmin = $this->session->userdata('auth');
+        if(!$isadmin){
+            redirect('/');
+        }
+        else{
+            $res = $this->application->weekly_print();
+            $total = $this->application->weekly_total();
+            $data = array('weekly' => $res, 'total'=>$total);
+            $this->load->view('admin/template/header');
+            $this->load->view('admin/template/sidebar');
+            $this->load->view('admin/template/topnavbar');
+            $this->load->view('admin/preview_wdata', $data);
+            $this->load->view('admin/template/footer');
+        }
+    }
+    
+    public function mprint() 
+    {   
+        $isadmin = $this->session->userdata('auth');
+        if(!$isadmin){
+            redirect('/');
+        }
+        else{
+            $res = $this->application->monthly_print();
+            $total = $this->application->monthly_total();
+            $data = array('monthly' => $res, 'total'=>$total);
+            $this->load->view('admin/template/header');
+            $this->load->view('admin/template/sidebar');
+            $this->load->view('admin/template/topnavbar');
+            $this->load->view('admin/preview_mdata', $data);
             $this->load->view('admin/template/footer');
         }
     }

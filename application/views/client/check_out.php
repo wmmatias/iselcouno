@@ -110,6 +110,24 @@ $new_total = $details['qty'] * $details['amount'];
                                     <button class="btn btn-primary w-100 p-5" type="submit" style="font-size: 2rem;"><i class="mdi mdi-credit-card"></i> Debit / Credit</button>
                                 </div>
                                 </form>
+                                <div class="col-md m-4">
+                                    <h5 class="mb-2">Please Upload your Reference# here: <small><a href="#" data-toggle="modal" data-target="#qr">Scan QRCode Here <i class="mdi mdi-qrcode-scan"></i></a></small></h5>
+                                    <form action="/payments/gcash/<?=$details['id']?>" method="post">
+                                        <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?= $this->security->get_csrf_hash();?>" />
+                                        <div class="col mb-3">
+                                            <input type="hidden" class="form-control" id="prod_id" name="prod_id" value="<?=$details['prod_id']?>">
+                                            <input type="hidden" class="form-control" id="app_id" name="app_id" value="<?=$details['id']?>" >
+                                            <input type="hidden" class="form-control" id="mop" name="mop" value="3">
+                                            <input type="text" class="form-control" id="reference" name="reference" minlength="5" placeholder="Reference Number">
+                                            <?php echo form_error('reference') ?>
+                                            <?php echo($this->session->userdata('gcash_error')) ?>
+
+                                        </div>
+                                        <div class="col mt-3">
+                                            <button class="btn btn-primary w-100 p-3" type="submit"  style="font-size: 2rem;">Gcash</button>
+                                        </div>
+                                    </form>
+                                </div>
                                 <div class="col-md m-4 p-5 border">
                                     <h5 class="mb-2">Please Upload your Proof of payment here: <small>(.jpg, .jpeg, .png)</small></h5>
                                     <form action="/payments/counter/<?=$details['id']?>" method="post"  enctype="multipart/form-data">
@@ -135,7 +153,26 @@ $new_total = $details['qty'] * $details['amount'];
                 </div>
 			</div>
 		</div>
-    </div> <!-- End Content -->
+
+        
+<!-- Modal -->
+<div class="modal fade" id="qr" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Gcash QR-Code</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body text-center">
+				<img class="img-fluid" src="/assets/images/qrcode.jpg" style="width:400px;" alt="qrcode">
+			</div>
+		</div>
+	</div>
+</div>
+       
 
     
     <script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

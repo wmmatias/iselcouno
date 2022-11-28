@@ -26,6 +26,7 @@ $error = $this->session->flashdata('input_errors');
     <link rel="stylesheet" href="/assets/admin/css/custom.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link href="https://unpkg.com/sleek-dashboard/dist/assets/css/sleek.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href="/assets/css/sleek.css" />
     <script src="/assets/plugins/nprogress/nprogress.js"></script>

@@ -28,7 +28,7 @@
     text-align: center;
 }
 #progress {
-  -webkit-appearance:none;
+  /* -webkit-appearance:none; */
     position: absolute;
     width: 95%;
     z-index: 5;

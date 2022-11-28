@@ -81,3 +81,4 @@ $route['clients/check_out/(:any)'] = 'clients/check_out/$1';
 $route['payments/success'] = 'payments/success';
 $route['payments/cancel'] = 'payments/cancel';
 $route['payments/counter/(:any)'] = 'payments/counter/$1';
+$route['payments/gcash/(:any)'] = 'payments/gcash/$1';

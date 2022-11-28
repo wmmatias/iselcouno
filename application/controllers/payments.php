@@ -81,4 +81,19 @@ class Payments extends CI_Controller {
         }
     }
 
+    public function gcash($id){
+        $form_data = $this->input->post();
+        $res = $this->application->gcash_validate($form_data);
+        if($res != 'success'){
+            $this->session->set_flashdata('gcash_error', '<p class="text-danger">Please upload a valid Reference Number</p>');
+            $this->load->view('client/success');
+            redirect('/clients/check_out/'.$id);
+        }
+        else{
+            $this->application->gcash($form_data);
+            $this->application->counter_paid($form_data);
+            $this->load->view('client/success');
+        }
+    }
+
 }
