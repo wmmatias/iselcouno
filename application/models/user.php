@@ -250,6 +250,20 @@ class User extends CI_Model {
             $this->security->xss_clean($id)));
     }
 
+    public function get_city($id){
+        return $this->db->query("SELECT * FROM cities WHERE id=?",
+        array(
+            $this->security->xss_clean($id)
+        ))->result_array()[0];
+    }
+
+    public function get_brgy($id){
+        return $this->db->query("SELECT * FROM barangays WHERE id=?",
+        array(
+            $this->security->xss_clean($id)
+        ))->result_array()[0];
+    }
+
 }
 
 ?>

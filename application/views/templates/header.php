@@ -112,6 +112,25 @@ $status = $this->session->userdata('status');
         });
     }
 </script>
+<script>
+    $(document).ready(function(){
+        $("#city").change(function(){
+            var city_id = $(this).val();
+            if(city_id!=""){
+                $.ajax({
+                    url:"<?=base_url('clients/barangay')?>",
+                    method:"get",
+                    data:{city_id:city_id},
+                    success:function(data){
+                        $("#baranggay").html(data);
+                    }
+                });
+            }else{
+                $('#baranggay').html(' <option value="">-- Select Barangay --</option>');
+            }
+        });
+    });
+</script>
     </head>
     <body id="page-top">
         <!-- Navigation-->

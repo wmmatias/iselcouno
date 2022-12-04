@@ -22,6 +22,8 @@ class Users extends CI_Controller {
             $email = $this->input->post('email');
             $user = $this->user->get_user_by_email($email);
             $details = $this->user->get_details_by_email($email);
+            $city1 = $this->user->get_city($details[0]['city']);
+            $brgy1 = $this->user->get_brgy($details[0]['baranggay']);
             $fullname = $user['first_name'] . ' ' . $user['last_name'];
             $status = $user['status'];
 
@@ -38,7 +40,7 @@ class Users extends CI_Controller {
                     }
                     else{
                         $this->session->set_flashdata('success', '<strong>Successfully!</strong> logged in!');
-                        $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname, 'details'=>$details, 'status'=> $status));
+                        $this->session->set_userdata(array('user_id'=>$user['id'], 'fullname'=>$fullname, 'details'=>$details, 'status'=> $status, 'cityshow'=>$city1, 'brgyshow'=>$brgy1));
                         redirect("clients");
                     }
                 }

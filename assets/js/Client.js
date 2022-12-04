@@ -8,26 +8,36 @@ $(document).ready(function(){
 
     $('#apply').on('show.bs.modal', function (e) {
         $('#blk').attr('readonly',true);
-        $('#baranggay').attr('readonly',true);
-        $('#city').attr('readonly',true);
+        $('#brgyshow').attr('readonly',true);
+        $('#cityshow').attr('readonly',true);
         $('#firstname').attr('readonly',true);
         $('#lastname').attr('readonly',true);
         $('#ptc').attr('disabled', true)
         $('#ptc1').hide();
+        $('#baranggay').hide();
+        $('#city').hide();
     });
    
 
     $('#new_address').change(function(){
         if($('#new_address:checked').length){
             $('#blk').attr('readonly',false);
-            $('#baranggay').attr('readonly',false);
-            $('#city').attr('readonly',false);
+            $('#baranggay').show();
+            $('#city').show();
+            $('#baranggayinput').attr('disabled',true);
+            $('#cityinput').attr('disabled',true);
+            $('#brgyshow').hide();
+            $('#cityshow').hide();
             $('#firstname').attr('readonly',false);
             $('#lastname').attr('readonly',false);
         }else{
             $('#blk').attr('readonly',true);
-            $('#baranggay').attr('readonly',true);
-            $('#city').attr('readonly',true);
+            $('#baranggayinput').attr('disabled',false);
+            $('#cityinput').attr('disabled',false);
+            $('#brgyshow').show();
+            $('#cityshow').show();
+            $('#baranggay').hide();
+            $('#city').hide();
             $('#firstname').attr('readonly',true);
             $('#lastname').attr('readonly',true);
         }

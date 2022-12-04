@@ -99,7 +99,7 @@ class Dashboard extends CI_Model {
     }
 
     public function select_new(){
-        $status = '0';
+        $status = '0.1';
         $query = "SELECT applications.id, users.first_name, users.last_name, applications.blk, applications.baranggay, applications.city, applications.status, applications.step, applications.created_at
         FROM iselcouno.applications
         LEFT JOIN iselcouno.users
@@ -133,6 +133,16 @@ class Dashboard extends CI_Model {
         return $this->db->query($query, $this->security->xss_clean($status))->result_array()[0];
     }
 
+    public function fetch_city(){
+        return $this->db->query("SELECT * FROM cities")->result_array();
+    }
+
+    public function fetch_barangay($city_id){
+        return $this->db->query("SELECT * FROM barangays WHERE cities_id=?",
+        array(
+            $this->security->xss_clean($city_id)
+        ))->result_array();
+    }
 
 }
 ?>

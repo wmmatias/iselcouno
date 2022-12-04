@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <thead>
                                         <tr>
                                             <th>Full Name</th>
-                                            <th>Address</th>
+                                            <!-- <th>Address</th> -->
                                             <th>Status</th>
                                             <th>Created at</th>
                                             <th>Action</th>
@@ -62,20 +62,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 $create = date('m-d-Y', strtotime($data['created_at']));
     ?>                                <tr>
                                         <td><?= $data['first_name'].' '.$data['last_name']?></td>
-                                        <td><?= $data['blk'].' '.$data['baranggay'].' '.$data['city']?></td>
+                                        <!-- <td><?= $data['blk'].' '.$data['baranggay'].' '.$data['city']?></td> -->
                                         <td>
-<?php                                       if($data['status'] === '0'){
-?>                                              New
-<?php                                       }
-                                            elseif($data['status'] === '1' || $data['status'] === '1.1'){
-?>                                              On Process 
-<?php                                           if($data['step'] === '3' && $data['status'] === '1'){
-?>                                                  <p class="badge bg-info <?=($data['status'] === '3' ? 'd-none':'')?>">To Pay</p>    
+<?php                                       if($data['status'] === '0'  || $data['status'] === '0.1'){
+?>                                             New Pending Payment
+<?php                                           if($data['step'] === '1' && $data['status'] === '0'){
+?>                                                  <p class="badge bg-info <?=($data['status'] === '0' ? '':'d-none')?>">To Pay</p>    
 <?php                                           }  
-                                                else if($data['step'] === '3' && $data['status'] === '1.1'){     
-?>                                                  <p class="badge bg-success <?=($data['status'] === '3' ? 'd-none':'')?>">Paid</p>
+                                                else if($data['step'] === '1' && $data['status'] === '0.1'){     
+?>                                                  <p class="badge bg-success <?=($data['status'] === '0.1' ? '':'d-none')?>">Paid</p>
 <?php                                           }
                                             }
+                                            elseif($data['status'] === '1'){
+?>                                              On Process 
+<?php                                            }
                                             elseif($data['status'] === '2'){
 ?>                                              Done
 <?php                                       }

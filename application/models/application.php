@@ -191,7 +191,6 @@ class Application extends CI_Model {
         WHERE YEAR(applications.created_at) = YEAR(NOW())
                 AND MONTH(applications.created_at) = MONTH(NOW()) 
                 AND DAY(applications.created_at) = DAY(NOW())
-                AND applications.status = ?
                 GROUP BY applications.status", array(
             $this->security->xss_clean($status)
         ))->result_array();
@@ -205,8 +204,7 @@ class Application extends CI_Model {
         ON applications.product_id = products.id
         WHERE YEAR(applications.created_at) = YEAR(NOW())
                 AND MONTH(applications.created_at) = MONTH(NOW()) 
-                AND DAY(applications.created_at) = DAY(NOW())
-                AND applications.status = ?", 
+                AND DAY(applications.created_at) = DAY(NOW())", 
         array(
             $this->security->xss_clean($status)
         ))->result_array();
@@ -220,8 +218,7 @@ class Application extends CI_Model {
         ON applications.product_id = products.id
         WHERE YEAR(applications.created_at) = YEAR(NOW())
                 AND MONTH(applications.created_at) = MONTH(NOW()) 
-                AND DAY(applications.created_at) = DAY(NOW())
-                AND applications.status = ?", 
+                AND DAY(applications.created_at) = DAY(NOW())", 
         array(
             $this->security->xss_clean($status)
         ))->result_array();
@@ -236,7 +233,6 @@ class Application extends CI_Model {
         WHERE YEAR(applications.created_at) = YEAR(NOW())
                 AND MONTH(applications.created_at) = MONTH(NOW()) 
                 AND DAY(applications.created_at) = DAY(NOW() - INTERVAL 1 DAY)
-                AND applications.status = ?
                 GROUP BY applications.status;", 
         array(
             $this->security->xss_clean($status)
@@ -249,7 +245,7 @@ class Application extends CI_Model {
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW())  AND applications.status = ?
+        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW())
         GROUP BY CAST(applications.created_at AS DATE)
         ORDER BY applications.created_at ASC", 
         array(
@@ -262,8 +258,7 @@ class Application extends CI_Model {
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW())
-        AND applications.status = ?", 
+        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW())", 
         array(
             $this->security->xss_clean($status)
         ))->result_array();
@@ -275,8 +270,7 @@ class Application extends CI_Model {
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW())
-        AND applications.status = ?", 
+        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW())", 
         array(
             $this->security->xss_clean($status)
         ))->result_array();
@@ -288,7 +282,7 @@ class Application extends CI_Model {
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEAR(applications.created_at) = YEAR(NOW()) AND MONTH(applications.created_at)=MONTH(NOW()) AND applications.status = ?
+        WHERE YEAR(applications.created_at) = YEAR(NOW()) AND MONTH(applications.created_at)=MONTH(NOW())
         GROUP BY CAST(applications.created_at AS DATE)
         ORDER BY applications.created_at ASC", array(
             $this->security->xss_clean($status)
@@ -303,8 +297,7 @@ class Application extends CI_Model {
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
         WHERE YEAR(applications.created_at) = YEAR(NOW()) 
-        AND MONTH(applications.created_at)=MONTH(NOW())
-        AND applications.status = ?", 
+        AND MONTH(applications.created_at)=MONTH(NOW())", 
         array(
             $this->security->xss_clean($status)
         ))->result_array();
@@ -317,8 +310,7 @@ class Application extends CI_Model {
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
         WHERE YEAR(applications.created_at) = YEAR(NOW()) 
-        AND MONTH(applications.created_at)=MONTH(NOW())
-        AND applications.status = ?", 
+        AND MONTH(applications.created_at)=MONTH(NOW())", 
         array(
             $this->security->xss_clean($status)
         ))->result_array();

@@ -1,0 +1,1321 @@
+#
+# TABLE STRUCTURE FOR: applications
+#
+
+DROP TABLE IF EXISTS `applications`;
+
+CREATE TABLE `applications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `product_id` int(11) NOT NULL,
+  `building_type` int(11) DEFAULT NULL,
+  `connection_type` int(11) DEFAULT NULL,
+  `qty` int(11) DEFAULT '1',
+  `blk` varchar(255) DEFAULT NULL,
+  `baranggay` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT '0',
+  `step` int(11) DEFAULT '1',
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`,`product_id`,`created_by`),
+  KEY `fk_applications_users1_idx` (`created_by`),
+  KEY `fk_applications_products1_idx1` (`product_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=172 DEFAULT CHARSET=latin1;
+
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('145', 'applicant1', 'lastname1', '13', '1', '1', '2', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '1', '2', '55', '2022-12-06 23:03:46', '2022-11-27 23:03:46');
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('144', 'applicant2', 'lastname2', '13', '1', '1', '1', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '1', '1', '55', '2022-11-24 23:03:10', '2022-11-27 23:03:10');
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('143', 'applicant3', 'lastname3', '13', '1', '1', '1', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '2', '5', '55', '2022-12-03 23:00:08', '2022-11-28 07:45:58');
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('142', 'applicant4', 'lastname4', '13', '2', '2', '1', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '1', '1', '55', '2022-11-16 07:22:45', '2022-11-27 07:34:52');
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('141', 'applicant5', 'lastname5', '13', '1', '2', '1', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '1', '1', '55', '2022-11-26 01:04:22', '2022-11-27 22:01:26');
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('131', 'applicant6', 'lastname6', '13', '2', '2', '1', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '0', '1', '55', '2022-11-27 18:08:54', '2022-11-27 01:02:03');
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('130', 'applicant7', 'lastname7', '13', '2', '2', '2', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '1', '1', '55', '2022-11-28 18:06:28', '2022-11-27 01:01:07');
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('129', 'applicant8', 'lastname8', '13', '1', '1', '1', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '3', '1', '55', '2022-11-28 17:52:49', '2022-11-27 01:10:00');
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('171', 'WILARD', 'MATIAS', '13', '1', '1', '1', 'P6 A3 BLK22 LOT8', '394', '10', '0.1', '1', '57', '2022-12-04 11:30:06', '2022-12-04 11:30:56');
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('163', 'Eduardo', 'Agrons', '13', '1', '1', '1', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '2', '5', '55', '2022-11-28 07:54:59', '2022-11-28 07:58:25');
+INSERT INTO `applications` (`id`, `first_name`, `last_name`, `product_id`, `building_type`, `connection_type`, `qty`, `blk`, `baranggay`, `city`, `status`, `step`, `created_by`, `created_at`, `updated_at`) VALUES ('164', 'Eduardo', 'Agrons', '13', '1', '1', '1', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '3', '1', '55', '2022-11-28 07:59:55', '2022-12-04 11:47:38');
+
+
+#
+# TABLE STRUCTURE FOR: barangays
+#
+
+DROP TABLE IF EXISTS `barangays`;
+
+CREATE TABLE `barangays` (
+  `id` int(11) DEFAULT NULL,
+  `cities_id` int(11) DEFAULT NULL,
+  `name` text,
+  `created_at` text,
+  `updated_at` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1', '1', 'Amistad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('2', '1', 'Antonino (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('3', '1', 'Apanay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('4', '1', 'Aurora', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('5', '1', 'Bagnos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('6', '1', 'Bagong Sikat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('7', '1', 'Bantug-Petines', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('8', '1', 'Bonifacio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('9', '1', 'Burgos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('10', '1', 'Calaocan (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('11', '1', 'Callao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('12', '1', 'Dagupan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('13', '1', 'Inanama', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('14', '1', 'Linglingay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('15', '1', 'M.H. del Pilar', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('16', '1', 'Mabini', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('17', '1', 'Magsaysay (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('18', '1', 'Mataas na Kahoy', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('19', '1', 'Paddad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('20', '1', 'Rizal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('21', '1', 'Rizaluna', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('22', '1', 'Salvacion', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('23', '1', 'San Antonio (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('24', '1', 'San Fernando', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('25', '1', 'San Francisco', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('26', '1', 'San Juan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('27', '1', 'San Pablo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('28', '1', 'San Pedro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('29', '1', 'Santa Cruz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('30', '1', 'Santa Maria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('31', '1', 'Santo Domingo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('32', '1', 'Santo Tomas', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('33', '1', 'Victoria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('34', '1', 'Zamora', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('35', '2', 'Allangigan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('36', '2', 'Aniog', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('37', '2', 'Baniket', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('38', '2', 'Bannawag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('39', '2', 'Bantug', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('40', '2', 'Barangcuag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('41', '2', 'Baui', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('42', '2', 'Bonifacio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('43', '2', 'Buenavista', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('44', '2', 'Bunnay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('45', '2', 'Calabayan-Minanga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('46', '2', 'Calaccab', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('47', '2', 'Calaocan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('48', '2', 'Kalusutan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('49', '2', 'Campanario', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('50', '2', 'Canangan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('51', '2', 'Centro I (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('52', '2', 'Centro II (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('53', '2', 'Centro III (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('54', '2', 'Consular', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('55', '2', 'Cumu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('56', '2', 'Dalakip', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('57', '2', 'Dalenat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('58', '2', 'Dipaluda', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('59', '2', 'Duroc', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('60', '2', 'Lourdes (El Escaño)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('61', '2', 'Esperanza', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('62', '2', 'Fugaru', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('63', '2', 'Liwliwa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('64', '2', 'Ingud Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('65', '2', 'Ingud Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('66', '2', 'La Suerte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('67', '2', 'Lomboy', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('68', '2', 'Loria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('69', '2', 'Mabuhay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('70', '2', 'Macalauat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('71', '2', 'Macaniao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('72', '2', 'Malannao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('73', '2', 'Malasin', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('74', '2', 'Mangandingay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('75', '2', 'Minanga Proper', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('76', '2', 'Pappat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('77', '2', 'Pissay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('78', '2', 'Ramona', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('79', '2', 'Rancho Bassit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('80', '2', 'Rang-ayan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('81', '2', 'Salay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('82', '2', 'San Ambrocio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('83', '2', 'San Guillermo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('84', '2', 'San Isidro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('85', '2', 'San Marcelo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('86', '2', 'San Roque', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('87', '2', 'San Vicente', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('88', '2', 'Santo Niño', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('89', '2', 'Saranay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('90', '2', 'Sinabbaran', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('91', '2', 'Victory', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('92', '2', 'Viga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('93', '2', 'Villa Domingo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('94', '3', 'Apiat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('95', '3', 'Bagnos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('96', '3', 'Bagong Tanza', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('97', '3', 'Ballesteros', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('98', '3', 'Bannagao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('99', '3', 'Bannawag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('100', '3', 'Bolinao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('101', '3', 'Santo Niño (Caipilan)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('102', '3', 'Camarunggayan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('103', '3', 'Dalig-Kalinga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('104', '3', 'Diamantina', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('105', '3', 'Divisoria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('106', '3', 'Esperanza East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('107', '3', 'Esperanza West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('108', '3', 'Kalabaza', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('109', '3', 'Rizalina (Lapuz)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('110', '3', 'Macatal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('111', '3', 'Malasin', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('112', '3', 'Nampicuan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('113', '3', 'Villa Nuesa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('114', '3', 'Panecien', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('115', '3', 'San Andres', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('116', '3', 'San Jose (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('117', '3', 'San Rafael', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('118', '3', 'San Ramon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('119', '3', 'Santa Rita', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('120', '3', 'Santa Rosa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('121', '3', 'Saranay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('122', '3', 'Sili', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('123', '3', 'Victoria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('124', '3', 'Villa Fugu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('125', '3', 'San Juan (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('126', '3', 'San Pedro-San Pablo (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('127', '4', 'Andabuen', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('128', '4', 'Ara', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('129', '4', 'Binogtungan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('130', '4', 'Capuseran (Capurocan)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('131', '4', 'Dagupan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('132', '4', 'Danipa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('133', '4', 'District II (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('134', '4', 'Gomez', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('135', '4', 'Guilingan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('136', '4', 'La Salette', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('137', '4', 'Makindol', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('138', '4', 'Maluno Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('139', '4', 'Maluno Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('140', '4', 'Nacalma', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('141', '4', 'New Magsaysay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('142', '4', 'District I (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('143', '4', 'Punit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('144', '4', 'San Carlos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('145', '4', 'San Francisco', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('146', '4', 'Santa Cruz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('147', '4', 'Sevillana', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('148', '4', 'Sinipit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('149', '4', 'Lucban', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('150', '4', 'Villaluz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('151', '4', 'Yeban Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('152', '4', 'Yeban Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('153', '4', 'Santiago', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('154', '4', 'Placer', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('155', '4', 'Balliao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('156', '5', 'Bacnor East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('157', '5', 'Bacnor West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('158', '5', 'Caliguian (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('159', '5', 'Catabban', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('160', '5', 'Cullalabo del Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('161', '5', 'Cullalabo del Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('162', '5', 'Dalig', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('163', '5', 'Malasin', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('164', '5', 'Masigun East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('165', '5', 'Raniag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('166', '5', 'San Antonino', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('167', '5', 'San Bonifacio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('168', '5', 'San Miguel', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('169', '5', 'San Roque', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('170', '6', 'Aggub', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('171', '6', 'Anao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('172', '6', 'Angancasilian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('173', '6', 'Balasig', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('174', '6', 'Cansan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('175', '6', 'Casibarag Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('176', '6', 'Casibarag Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('177', '6', 'Catabayungan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('178', '6', 'Centro (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('179', '6', 'Cubag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('180', '6', 'Garita', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('181', '6', 'Luquilu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('182', '6', 'Mabangug', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('183', '6', 'Magassi', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('184', '6', 'Masipi East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('185', '6', 'Masipi West (Magallones)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('186', '6', 'Ngarag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('187', '6', 'Pilig Abajo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('188', '6', 'Pilig Alto', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('189', '6', 'San Antonio (Candanum)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('190', '6', 'San Bernardo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('191', '6', 'San Juan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('192', '6', 'Saui', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('193', '6', 'Tallag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('194', '6', 'Ugad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('195', '6', 'Union', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('196', '7', 'Centro (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('197', '7', 'Del Pilar', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('198', '7', 'Magdalena', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('199', '7', 'Sampaloc', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('200', '7', 'San Andres', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('201', '7', 'Saranay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('202', '7', 'Calaocan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('203', '7', 'Canan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('204', '7', 'Culing Centro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('205', '7', 'Culing East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('206', '7', 'Culing West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('207', '7', 'Del Corpuz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('208', '7', 'Diamantina', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('209', '7', 'La Paz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('210', '7', 'Luzon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('211', '7', 'Macalaoat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('212', '7', 'Magsaysay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('213', '7', 'Namnama', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('214', '7', 'Nueva Era', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('215', '7', 'Paraiso', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('216', '7', 'Rang-ay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('217', '7', 'Tandul', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('218', '8', 'Alicaocao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('219', '8', 'Amobocan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('220', '8', 'Andarayan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('221', '8', 'Bacolod', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('222', '8', 'Baringin Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('223', '8', 'Baringin Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('224', '8', 'Buena Suerte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('225', '8', 'Bugallon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('226', '8', 'Buyon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('227', '8', 'Cabaruan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('228', '8', 'Cabugao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('229', '8', 'Carabatan Chica', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('230', '8', 'Carabatan Grande', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('231', '8', 'Carabatan Punta', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('232', '8', 'Carabatan Bacareno', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('233', '8', 'Casalatan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('234', '8', 'Cassap Fuera', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('235', '8', 'Catalina', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('236', '8', 'Culalabat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('237', '8', 'Dabburab', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('238', '8', 'De Vera', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('239', '8', 'Dianao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('240', '8', 'Dissimuray', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('241', '8', 'District I (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('242', '8', 'District II (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('243', '8', 'District III (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('244', '8', 'Duminit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('245', '8', 'Faustino (Sipay)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('246', '8', 'Gagabutan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('247', '8', 'Gappal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('248', '8', 'Guayabal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('249', '8', 'Labinab', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('250', '8', 'Linglingay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('251', '8', 'Mabantad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('252', '8', 'Maligaya', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('253', '8', 'Manaoag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('254', '8', 'Marabulig I', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('255', '8', 'Marabulig II', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('256', '8', 'Minante I', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('257', '8', 'Minante II', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('258', '8', 'Nagcampegan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('259', '8', 'Naganacan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('260', '8', 'Nagrumbuan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('261', '8', 'Nungnungan I', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('262', '8', 'Nungnungan II', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('263', '8', 'Pinoma', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('264', '8', 'Rizaluna', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('265', '8', 'Rizal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('266', '8', 'Rogus', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('267', '8', 'San Antonio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('268', '8', 'San Fermin (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('269', '8', 'San Francisco', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('270', '8', 'San Isidro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('271', '8', 'San Luis', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('272', '8', 'San Pablo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('273', '8', 'Santa Luciana (Daburab 2)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('274', '8', 'Santa Maria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('275', '8', 'Sillawit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('276', '8', 'Sinippil', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('277', '8', 'Tagaran', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('278', '8', 'Turayong', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('279', '8', 'Union', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('280', '8', 'Villa Luna', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('281', '8', 'Villa Concepcion', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('282', '8', 'Villaflor', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('283', '9', 'Aggasian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('284', '9', 'Alibagu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('285', '9', 'Alinguigan 1st', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('286', '9', 'Alinguigan 2nd', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('287', '9', 'Alinguigan 3rd', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('288', '9', 'Arusip', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('289', '9', 'Baculod (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('290', '9', 'Bagong Silang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('291', '9', 'Bagumbayan (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('292', '9', 'Baligatan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('293', '9', 'Ballacong', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('294', '9', 'Bangag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('295', '9', 'Batong-Labang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('296', '9', 'Bigao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('297', '9', 'Cabannungan 1st', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('298', '9', 'Cabannungan 2nd', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('299', '9', 'Cabesera 2 (Dappat)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('300', '9', 'Cabesera 3 (San Fernando)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('301', '9', 'Cabesera 4 (San Manuel)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('302', '9', 'Cabesera 5 (Baribad)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('303', '9', 'Cabesera 6 and 24 (Villa Marcos)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('304', '9', 'Cabesera 7 (Nangalisan)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('305', '9', 'Cabesera 9 and 11 (Capogotan)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('306', '9', 'Cabesera 10 (Lapigui)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('307', '9', 'Cabesera 14 and 16 (Casilagan)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('308', '9', 'Cabesera 17 and 21 (San Rafael)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('309', '9', 'Cabesera 19 (Villa Suerte)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('310', '9', 'Cabesera 22 (Sablang)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('311', '9', 'Cabesera 23 (San Francisco)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('312', '9', 'Cabesera 25 (Santa Lucia)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('313', '9', 'Cabesera 27 (Abuan)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('314', '9', 'Cadu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('315', '9', 'Calamagui 1st', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('316', '9', 'Calamagui 2nd', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('317', '9', 'Camunatan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('318', '9', 'Capellan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('319', '9', 'Capo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('320', '9', 'Carikkikan Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('321', '9', 'Carikkikan Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('322', '9', 'Centro - San Antonio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('323', '9', 'Centro Poblacion', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('324', '9', 'Fugu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('325', '9', 'Fuyo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('326', '9', 'Gayong-Gayong Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('327', '9', 'Gayong-Gayong Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('328', '9', 'Guinatan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('329', '9', 'Imelda Bliss Village', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('330', '9', 'Lullutan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('331', '9', 'Malalam', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('332', '9', 'Malasin (Angeles)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('333', '9', 'Manaring', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('334', '9', 'Mangcuram', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('335', '9', 'Marana I', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('336', '9', 'Marana II', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('337', '9', 'Marana III', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('338', '9', 'Minabang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('339', '9', 'Morado', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('340', '9', 'Naguilian Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('341', '9', 'Naguilian Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('342', '9', 'Namnama', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('343', '9', 'Nanaguan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('344', '9', 'Osmeña (Sinippil)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('345', '9', 'Paliueg', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('346', '9', 'Pasa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('347', '9', 'Pilar', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('348', '9', 'Quimalabasa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('349', '9', 'Rang-ayan (Bintacan)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('350', '9', 'Rugao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('351', '9', 'Salindingan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('352', '9', 'San Andres (Angarilla)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('353', '9', 'San Felipe', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('354', '9', 'San Ignacio (Canapi)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('355', '9', 'San Isidro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('356', '9', 'San Juan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('357', '9', 'San Lorenzo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('358', '9', 'San Pablo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('359', '9', 'San Rodrigo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('360', '9', 'San Vicente (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('361', '9', 'Santa Barbara (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('362', '9', 'Santa Catalina', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('363', '9', 'Santa Isabel Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('364', '9', 'Santa Isabel Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('365', '9', 'Santa Maria (Cabeseria 8)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('366', '9', 'Santa Victoria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('367', '9', 'Santo Tomas', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('368', '9', 'Siffu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('369', '9', 'Sindon Bayabo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('370', '9', 'Sindon Maride', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('371', '9', 'Sipay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('372', '9', 'Tangcul', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('373', '9', 'Villa Imelda (Maplas)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('374', '10', 'Ambalatungan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('375', '10', 'Balintocatoc (Dariuk)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('376', '10', 'Baluarte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('377', '10', 'Bannawag Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('378', '10', 'Batal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('379', '10', 'Buenavista (Sitio Carubucod)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('380', '10', 'Cabulay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('381', '10', 'Calao East (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('382', '10', 'Calao West (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('383', '10', 'Calaocan (Talab)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('384', '10', 'Villa Gonzaga (Caralet)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('385', '10', 'Centro East (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('386', '10', 'Centro West (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('387', '10', 'Divisoria (Lantaran)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('388', '10', 'Dubinan East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('389', '10', 'Dubinan West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('390', '10', 'Luna (Palasian)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('391', '10', 'Mabini', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('392', '10', 'Malvar', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('393', '10', 'Nabbuan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('394', '10', 'Naggasican', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('395', '10', 'Patul', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('396', '10', 'Plaridel (Dullit)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('397', '10', 'Rizal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('398', '10', 'Rosario (Pakret)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('399', '10', 'Sagana (Kaminurian)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('400', '10', 'Salvador (Kapayakan)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('401', '10', 'San Andres', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('402', '10', 'San Isidro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('403', '10', 'San Jose (Matunga-tungao)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('404', '10', 'Sinili (Casilihan)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('405', '10', 'Sinsayon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('406', '10', 'Santa Rosa (Marubo-rubo)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('407', '10', 'Victory Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('408', '10', 'Victory Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('409', '10', 'Villasis', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('410', '11', 'Anonang (Balitoc)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('411', '11', 'Aguinaldo (Rizaluna Este)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('412', '11', 'Calimaturod', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('413', '11', 'Capirpiriwan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('414', '11', 'Caquilingan (Ilut) (San Luis)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('415', '11', 'Dallao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('416', '11', 'Gayong', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('417', '11', 'Laurel (Centro Norte)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('418', '11', 'Magsaysay (Centro Sur Oeste)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('419', '11', 'Malapat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('420', '11', 'Osmeña (Centro Sur Este)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('421', '11', 'Quezon (Centro Norte Este)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('422', '11', 'Quirino (Manasin)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('423', '11', 'Rizaluna (Rizaluna Oeste)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('424', '11', 'Roxas Pob. (Centro Sur)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('425', '11', 'Sagat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('426', '11', 'San Juan (San Juan Este)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('427', '11', 'Taliktik', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('428', '11', 'Tanggal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('429', '11', 'Taringsing', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('430', '11', 'Turod Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('431', '11', 'Turod Sur (Turod Sur Este)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('432', '11', 'Villamiemban', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('433', '11', 'Villamarzo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('434', '11', 'Camarao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('435', '11', 'Wigan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('436', '12', 'Aga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('437', '12', 'Andarayan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('438', '12', 'Aneg', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('439', '12', 'Bayabo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('440', '12', 'Calinaoan Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('441', '12', 'Capitol', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('442', '12', 'Carmencita', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('443', '12', 'Concepcion', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('444', '12', 'Maui', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('445', '12', 'Quibal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('446', '12', 'Ragan Almacen', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('447', '12', 'Ragan Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('448', '12', 'Ragan Sur (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('449', '12', 'Rizal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('450', '12', 'San Andres', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('451', '12', 'San Antonio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('452', '12', 'San Isidro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('453', '12', 'San Jose', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('454', '12', 'San Juan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('455', '12', 'San Macario', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('456', '12', 'San Nicolas (Fusi)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('457', '12', 'San Patricio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('458', '12', 'San Roque', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('459', '12', 'Santo Rosario', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('460', '12', 'Santor', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('461', '12', 'Villa Luz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('462', '12', 'Villa Pereda', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('463', '12', 'Visitacion', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('464', '12', 'Caloocan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('465', '13', 'Ayod', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('466', '13', 'Bucal Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('467', '13', 'Bucal Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('468', '13', 'Dibulo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('469', '13', 'Digumased (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('470', '13', 'Dimaluade', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('471', '14', 'Dicambangan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('472', '14', 'Dicaruyan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('473', '14', 'Dicatian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('474', '14', 'Bicobian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('475', '14', 'Dilakit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('476', '14', 'Dimapnat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('477', '14', 'Dimapula (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('478', '14', 'Dimasalansan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('479', '14', 'Dipudo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('480', '14', 'Dibulos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('481', '14', 'Ditarum', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('482', '14', 'Sapinit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('483', '15', 'Angoluan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('484', '15', 'Annafunan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('485', '15', 'Arabiat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('486', '15', 'Aromin', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('487', '15', 'Babaran', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('488', '15', 'Bacradal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('489', '15', 'Benguet', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('490', '15', 'Buneg', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('491', '15', 'Busilelao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('492', '15', 'Cabugao (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('493', '15', 'Caniguing', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('494', '15', 'Carulay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('495', '15', 'Castillo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('496', '15', 'Dammang East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('497', '15', 'Dammang West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('498', '15', 'Diasan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('499', '15', 'Dicaraoyan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('500', '15', 'Dugayong', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('501', '15', 'Fugu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('502', '15', 'Garit Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('503', '15', 'Garit Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('504', '15', 'Gucab', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('505', '15', 'Gumbauan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('506', '15', 'Ipil', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('507', '15', 'Libertad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('508', '15', 'Mabbayad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('509', '15', 'Mabuhay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('510', '15', 'Madadamian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('511', '15', 'Magleticia', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('512', '15', 'Malibago', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('513', '15', 'Maligaya', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('514', '15', 'Malitao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('515', '15', 'Narra', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('516', '15', 'Nilumisu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('517', '15', 'Pag-asa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('518', '15', 'Pangal Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('519', '15', 'Pangal Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('520', '15', 'Rumang-ay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('521', '15', 'Salay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('522', '15', 'Salvacion', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('523', '15', 'San Antonio Ugad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('524', '15', 'San Antonio Minit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('525', '15', 'San Carlos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('526', '15', 'San Fabian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('527', '15', 'San Felipe', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('528', '15', 'San Juan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('529', '15', 'San Manuel (formerly Atelan)[8]', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('530', '15', 'San Miguel', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('531', '15', 'San Salvador', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('532', '15', 'Santa Ana', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('533', '15', 'Santa Cruz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('534', '15', 'Santa Maria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('535', '15', 'Santa Monica', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('536', '15', 'Santo Domingo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('537', '15', 'Silauan Sur (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('538', '15', 'Silauan Norte (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('539', '15', 'Sinabbaran', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('540', '15', 'Soyung (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('541', '15', 'Taggappan (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('542', '15', 'Tuguegarao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('543', '15', 'Villa Campo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('544', '15', 'Villa Fermin', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('545', '15', 'Villa Rey', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('546', '15', 'Villa Victoria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('547', '16', 'Barcolan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('548', '16', 'Buenavista', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('549', '16', 'Dammao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('550', '16', 'District I (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('551', '16', 'District II (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('552', '16', 'District III (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('553', '16', 'Furao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('554', '16', 'Guibang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('555', '16', 'Lenzon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('556', '16', 'Linglingay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('557', '16', 'Mabini', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('558', '16', 'Pintor', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('559', '16', 'Rizal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('560', '16', 'Songsong', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('561', '16', 'Union', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('562', '16', 'Upi', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('563', '17', 'Abulan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('564', '17', 'Addalam', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('565', '17', 'Arubub', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('566', '17', 'Bannawag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('567', '17', 'Bantay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('568', '17', 'Barangay I (Poblacion - Centro)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('569', '17', 'Barangay II (Poblacion - Centro)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('570', '17', 'Barangcuag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('571', '17', 'Dalibubon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('572', '17', 'Daligan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('573', '17', 'Diarao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('574', '17', 'Dibuluan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('575', '17', 'Dicamay I', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('576', '17', 'Dicamay II', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('577', '17', 'Dipangit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('578', '17', 'Disimpit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('579', '17', 'Divinan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('580', '17', 'Dumawing', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('581', '17', 'Fugu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('582', '17', 'Lacab', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('583', '17', 'Linamanan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('584', '17', 'Linomot', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('585', '17', 'Malannit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('586', '17', 'Minuri', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('587', '17', 'Namnama', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('588', '17', 'Napaliong', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('589', '17', 'Palagao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('590', '17', 'Papan Este', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('591', '17', 'Papan Weste', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('592', '17', 'Payac', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('593', '17', 'Pungpongan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('594', '17', 'San Antonio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('595', '17', 'San Isidro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('596', '17', 'San Jose', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('597', '17', 'San Roque', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('598', '17', 'San Sebastian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('599', '17', 'San Vicente', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('600', '17', 'Santa Isabel', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('601', '17', 'Santo Domingo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('602', '17', 'Tupax', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('603', '17', 'Usol', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('604', '17', 'Villa Bello', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('605', '18', 'Bustamante', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('606', '18', 'Centro 1 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('607', '18', 'Centro 2 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('608', '18', 'Centro 3 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('609', '18', 'Concepcion', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('610', '18', 'Dadap', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('611', '18', 'Harana', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('612', '18', 'Lalog 1', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('613', '18', 'Lalog 2', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('614', '18', 'Luyao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('615', '18', 'Macañao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('616', '18', 'Macugay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('617', '18', 'Mambabanga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('618', '18', 'Pulay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('619', '18', 'Puroc', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('620', '18', 'San Isidro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('621', '18', 'San Miguel', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('622', '18', 'Santo Domingo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('623', '18', 'Union Kalinga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('624', '19', 'Diana', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('625', '19', 'Eleonor (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('626', '19', 'Fely (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('627', '19', 'Lita (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('628', '19', 'Reina Mercedes', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('629', '19', 'Minanga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('630', '19', 'Malasin', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('631', '19', 'Canadam', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('632', '19', 'Aplaya', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('633', '19', 'Santa Marina (Dianggo)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('634', '20', 'San Pedro (Barucbuc Sur)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('635', '20', 'Bimonton', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('636', '20', 'Casili', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('637', '20', 'Centro I', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('638', '20', 'Holy Friday', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('639', '20', 'Jacinto Baniqued (Centro II pob)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('640', '20', 'Maligaya', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('641', '20', 'Manano', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('642', '20', 'Olango', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('643', '20', 'Rang-ayan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('644', '20', 'San Jose Norte I', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('645', '20', 'San Jose Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('646', '20', 'Siempre Viva Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('647', '20', 'Trinidad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('648', '20', 'Victoria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('649', '20', 'San Jose Norte II', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('650', '20', 'San Ramon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('651', '20', 'Siempre Viva Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('652', '21', 'Aguinaldo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('653', '21', 'Bagong Sikat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('654', '21', 'Burgos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('655', '21', 'Cabaruan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('656', '21', 'Flores', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('657', '21', 'La Union', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('658', '21', 'Magsaysay (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('659', '21', 'Manaring', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('660', '21', 'Mansibang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('661', '21', 'Minallo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('662', '21', 'Minanga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('663', '21', 'Palattao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('664', '21', 'Quezon (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('665', '21', 'Quinalabasa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('666', '21', 'Quirino (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('667', '21', 'Rang-Ayan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('668', '21', 'Rizal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('669', '21', 'Roxas (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('670', '21', 'San Manuel', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('671', '21', 'Santo Tomas', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('672', '21', 'Sunlife', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('673', '21', 'Surcoc', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('674', '21', 'Tomines', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('675', '21', 'Villapaz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('676', '21', 'Villa Capuchino', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('677', '22', 'Alomanay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('678', '22', 'Bisag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('679', '22', 'Culasi', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('680', '22', 'Dialaoyao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('681', '22', 'Dibewan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('682', '22', 'Dicadyuan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('683', '22', 'Dicotkotan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('684', '22', 'Diddadungan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('685', '22', 'Didyan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('686', '22', 'Dimalicu-licu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('687', '22', 'Dimasari', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('688', '22', 'Dimatican', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('689', '22', 'Ditambali', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('690', '22', 'Maligaya', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('691', '22', 'Marikit', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('692', '22', 'Centro East (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('693', '22', 'Centro West (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('694', '23', 'Abut', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('695', '23', 'Alunan (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('696', '23', 'Arellano (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('697', '23', 'Aurora', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('698', '23', 'Barucboc Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('699', '23', 'Calangigan (Calamagui)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('700', '23', 'Dunmon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('701', '23', 'Estrada', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('702', '23', 'Lepanto', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('703', '23', 'Mangga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('704', '23', 'Minagbag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('705', '23', 'Samonte (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('706', '23', 'San Juan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('707', '23', 'Santos (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('708', '23', 'Turod', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('709', '24', 'Binarzang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('710', '24', 'Cabaruan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('711', '24', 'Camaal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('712', '24', 'Dolores', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('713', '24', 'Luna (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('714', '24', 'Manaoag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('715', '24', 'Rizal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('716', '24', 'San Isidro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('717', '24', 'San Jose', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('718', '24', 'San Juan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('719', '24', 'San Mateo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('720', '24', 'San Vicente', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('721', '24', 'Santa Catalina', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('722', '24', 'Santa Lucia', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('723', '24', 'Santiago (Villa Cacho)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('724', '24', 'Santo Domingo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('725', '24', 'Sinait', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('726', '24', 'Suerte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('727', '24', 'Villa Bulusan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('728', '24', 'Villa Miguel (Tabok)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('729', '24', 'Vintar', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('731', '25', 'Ambatali', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('732', '25', 'Bantug', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('733', '25', 'Bugallion Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('734', '25', 'Bugallion Proper (Centro)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('735', '25', 'Burgos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('736', '25', 'General Aguinaldo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('737', '25', 'Nagbacalan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('738', '25', 'Oscariz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('739', '25', 'Pabil', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('740', '25', 'Pagrang-ayan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('741', '25', 'Planas', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('742', '25', 'Purok ni bulan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('743', '25', 'Raniag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('744', '25', 'San Miguel', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('745', '25', 'San Antonio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('746', '25', 'San Sebastian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('747', '25', 'Villa Beltran', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('748', '25', 'Villa Carmen', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('749', '25', 'Villa Marcos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('750', '26', 'Banquero', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('751', '26', 'Binarsang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('752', '26', 'Cutog Grande', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('753', '26', 'Cutog Pequeño', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('754', '26', 'Dangan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('755', '26', 'District I (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('756', '26', 'District II', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('757', '26', 'Labinab Grande', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('758', '26', 'Labinab Pequeño', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('759', '26', 'Mallalatang Grande', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('760', '26', 'Mallalatang Tunggui', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('761', '26', 'Nappacu Grande (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('762', '26', 'Nappacu Pequeño (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('763', '26', 'Salucong', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('764', '26', 'Santiago', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('765', '26', 'Santor', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('766', '26', 'Sinippil (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('767', '26', 'Tallungan (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('768', '26', 'Turod', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('769', '26', 'Villador', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('770', '27', 'Anao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('771', '27', 'Bantug (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('772', '27', 'Doña Concha', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('773', '27', 'Imbiao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('774', '27', 'Lanting', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('775', '27', 'Lucban', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('776', '27', 'Luna (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('777', '27', 'Marcos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('778', '27', 'Masigun', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('779', '27', 'Matusalem', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('780', '27', 'Muñoz East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('781', '27', 'Muñoz West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('782', '27', 'Quiling', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('783', '27', 'Rang-ayan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('784', '27', 'Rizal (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('785', '27', 'San Antonio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('786', '27', 'San Jose', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('787', '27', 'San Luis', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('788', '27', 'San Pedro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('789', '27', 'San Placido', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('790', '27', 'San Rafael', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('791', '27', 'Simimbaan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('792', '27', 'Sinamar', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('793', '27', 'Sotero Nuesa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('794', '27', 'Villa Concepcion', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('795', '27', 'Vira (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('796', '28', 'Bautista', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('797', '28', 'Calaocan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('798', '28', 'Dabubu Grande', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('799', '28', 'Dabubu Pequeño', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('800', '28', 'Dappig', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('801', '28', 'Laoag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('802', '28', 'Mapalad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('803', '28', 'Masaya Centro (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('804', '28', 'Masaya Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('805', '28', 'Masaya Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('806', '28', 'Nemmatan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('807', '28', 'Palacian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('808', '28', 'Panang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('809', '28', 'Quimalabasa Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('810', '28', 'Quimalabasa Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('811', '28', 'Rang-ay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('812', '28', 'Salay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('813', '28', 'San Antonio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('814', '28', 'Santo Niño', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('815', '28', 'Santos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('816', '28', 'Sinaoangan Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('817', '28', 'Sinaoangan Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('818', '28', 'Virgoneza', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('819', '29', 'Anonang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('820', '29', 'Aringay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('821', '29', 'Burgos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('822', '29', 'Calaoagan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('823', '29', 'Centro 1 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('824', '29', 'Centro 2 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('825', '29', 'Colorado', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('826', '29', 'Dietban', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('827', '29', 'Dingading', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('828', '29', 'Dipacamo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('829', '29', 'Estrella', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('830', '29', 'Guam', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('831', '29', 'Nakar', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('832', '29', 'Palawan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('833', '29', 'Progreso', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('834', '29', 'Rizal', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('835', '29', 'San Francisco Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('836', '29', 'San Francisco Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('837', '29', 'San Mariano Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('838', '29', 'San Mariano Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('839', '29', 'San Rafael', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('840', '29', 'Sinalugan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('841', '29', 'Villa Remedios', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('842', '29', 'Villa Rose', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('843', '29', 'Villa Sanchez', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('844', '29', 'Villa Teresita', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('845', '30', 'Camarag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('846', '30', 'Cebu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('847', '30', 'Doña Paulina', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('848', '30', 'Gomez (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('849', '30', 'Gud', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('850', '30', 'Nagbukel', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('851', '30', 'Patanad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('852', '30', 'Quezon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('853', '30', 'Ramos East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('854', '30', 'Ramos West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('855', '30', 'Rizal East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('856', '30', 'Rizal West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('857', '30', 'Villaflor', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('858', '31', 'Agliam', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('859', '31', 'Babanuang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('860', '31', 'Cabaritan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('861', '31', 'Caraniogan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('862', '31', 'Eden', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('863', '31', 'Malalinta', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('864', '31', 'Mararigue', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('865', '31', 'Nueva Era', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('866', '31', 'Pisang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('867', '31', 'District 1 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('868', '31', 'District 2 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('869', '31', 'District 3 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('870', '31', 'District 4 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('871', '31', 'San Francisco', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('872', '31', 'Sandiat Centro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('873', '31', 'Sandiat East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('874', '31', 'Sandiat West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('875', '31', 'Santa Cruz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('876', '31', 'Villanueva', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('877', '32', 'Alibadabad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('878', '32', 'Balagan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('879', '32', 'Binatug', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('880', '32', 'Bitabian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('881', '32', 'Buyasan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('882', '32', 'Cadsalan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('883', '32', 'Casala', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('884', '32', 'Cataguing', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('885', '32', 'Daragutan East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('886', '32', 'Daragutan West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('887', '32', 'Del Pilar', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('888', '32', 'Dibuluan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('889', '32', 'Dicamay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('890', '32', 'Dipusu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('891', '32', 'Disulap', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('892', '32', 'Disusuan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('893', '32', 'Gangalan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('894', '32', 'Ibujan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('895', '32', 'Libertad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('896', '32', 'Macayucayu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('897', '32', 'Mallabo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('898', '32', 'Marannao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('899', '32', 'Minanga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('900', '32', 'Old San Mariano', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('901', '32', 'Palutan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('902', '32', 'Panninan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('903', '32', 'Zone I (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('904', '32', 'Zone II (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('905', '32', 'Zone III (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('906', '32', 'San Jose', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('907', '32', 'San Pablo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('908', '32', 'San Pedro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('909', '32', 'Santa Filomena', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('910', '32', 'Tappa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('911', '32', 'Ueg', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('912', '32', 'Zamora', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('913', '33', 'Bacarreña', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('914', '33', 'Bagong Sikat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('915', '33', 'Bella Luz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('916', '33', 'Dagupan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('917', '33', 'Daramuangan Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('918', '33', 'Daramuangan Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('919', '33', 'Estrella', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('920', '33', 'Gaddanan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('921', '33', 'Malasin', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('922', '33', 'Mapuroc', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('923', '33', 'Marasat Grande', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('924', '33', 'Marasat Pequeño', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('925', '33', 'Old Centro I', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('926', '33', 'Old Centro Proper', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('927', '33', 'Barangay I (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('928', '33', 'Barangay II (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('929', '33', 'Barangay III (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('930', '33', 'Barangay IV (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('931', '33', 'Salinungan East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('932', '33', 'Salinungan West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('933', '33', 'San Andres', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('934', '33', 'San Antonio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('935', '33', 'San Ignacio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('936', '33', 'San Manuel', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('937', '33', 'San Marcos', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('938', '33', 'San Roque', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('939', '33', 'Sinamar Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('940', '33', 'Sinamar Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('941', '33', 'Victoria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('942', '33', 'Villafuerte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('943', '33', 'Villa Cruz', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('944', '33', 'Villa Magat', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('945', '33', 'Villa Gamiao (Buyon)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('946', '34', 'Annanuman', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('947', '34', 'Auitan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('948', '34', 'Ballacayu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('949', '34', 'Binguang', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('950', '34', 'Bungad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('951', '34', 'Dalena', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('952', '34', 'Caddangan/Limbauan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('953', '34', 'Calamagui', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('954', '34', 'Caralucud', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('955', '34', 'Guminga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('956', '34', 'Minanga Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('957', '34', 'Minanga Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('958', '34', 'San Jose', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('959', '34', 'Poblacion', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('960', '34', 'Simanu Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('961', '34', 'Simanu Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('962', '34', 'Tupa (San Vicente)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('963', '35', 'Bangad', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('964', '35', 'Buenavista', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('965', '35', 'Calamagui North', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('966', '35', 'Calamagui East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('967', '35', 'Calamagui West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('968', '35', 'Divisoria', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('969', '35', 'Lingaling', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('970', '35', 'Mozzozzin Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('971', '35', 'Mozzozzin North', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('972', '35', 'Naganacan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('973', '35', 'Poblacion 1', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('974', '35', 'Poblacion 2', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('975', '35', 'Poblacion 3', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('976', '35', 'Quinagabian', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('977', '35', 'San Antonio', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('978', '35', 'San Isidro East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('979', '35', 'San Isidro West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('980', '35', 'San Rafael West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('981', '35', 'San Rafael East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('982', '35', 'Villabuena', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('984', '36', 'Ammugauan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('985', '36', 'Antagan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('986', '36', 'Bagabag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('987', '36', 'Bagutari', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('988', '36', 'Balelleng', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('989', '36', 'Barumbong', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('990', '36', 'Biga Occidental', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('991', '36', 'Biga Oriental', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('992', '36', 'Bubug', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('993', '36', 'Bolinao-Culalabo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('994', '36', 'Calanigan Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('995', '36', 'Calanigan Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('996', '36', 'Calinaoan Centro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('997', '36', 'Calinaoan Malasin', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('998', '36', 'Calinaoan Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('999', '36', 'Cañogan Abajo Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1000', '36', 'Cañogan Abajo Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1001', '36', 'Cañogan Alto', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1002', '36', 'Centro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1003', '36', 'Colunguan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1004', '36', 'Malapagay', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1005', '36', 'San Rafael Abajo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1006', '36', 'San Rafael Alto', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1007', '36', 'San Roque', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1008', '36', 'San Vicente', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1009', '36', 'Uauang-Tuliao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1010', '36', 'Uauang-Galicia', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1011', '37', 'Annafunan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1012', '37', 'Antagan I', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1013', '37', 'Antagan II', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1014', '37', 'Arcon', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1015', '37', 'Balug', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1016', '37', 'Banig', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1017', '37', 'Bantug', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1018', '37', 'Barangay District 1 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1019', '37', 'Barangay District 2 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1020', '37', 'Barangay District 3 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1021', '37', 'Barangay District 4 (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1022', '37', 'Bayabo East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1023', '37', 'Caligayan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1024', '37', 'Camasi', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1025', '37', 'Carpentero', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1026', '37', 'Compania', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1027', '37', 'Cumabao', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1028', '37', 'Fermeldy (Hacienda San Francisco)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1029', '37', 'Fugu Abajo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1030', '37', 'Fugu Norte', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1031', '37', 'Fugu Sur', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1032', '37', 'Lalauanan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1033', '37', 'Lanna', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1034', '37', 'Lapogan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1035', '37', 'Lingaling (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1036', '37', 'Liwanag', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1037', '37', 'Malamag East', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1038', '37', 'Malamag West', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1039', '37', 'Maligaya (Poblacion)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1040', '37', 'Minanga', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1041', '37', 'Moldero', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1042', '37', 'Namnama', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1043', '37', 'Paragu', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1044', '37', 'Pilitan', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1045', '37', 'San Mateo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1046', '37', 'San Pedro', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1047', '37', 'San Vicente', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1048', '37', 'Santa', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1049', '37', 'Santa Catalina', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1050', '37', 'Santa Visitacion (Maggayu)', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1051', '37', 'Santo Niño', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1052', '37', 'Sinippil', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1053', '37', 'Sisim Abajo', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1054', '37', 'Sisim Alto', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1055', '37', 'Tunggui', '12/03/2022', '12/03/2022');
+INSERT INTO `barangays` (`id`, `cities_id`, `name`, `created_at`, `updated_at`) VALUES ('1056', '37', 'Ugad', '12/03/2022', '12/03/2022');
+
+
+#
+# TABLE STRUCTURE FOR: cities
+#
+
+DROP TABLE IF EXISTS `cities`;
+
+CREATE TABLE `cities` (
+  `id` int(11) DEFAULT NULL,
+  `name` text,
+  `created_at` text,
+  `updated_at` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('1', 'ALICIA', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('2', 'ANGADANAN', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('3', 'AURORA', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('4', 'BENITO SOLIVEN', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('5', 'BURGUS', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('6', 'CABAGAN', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('7', 'CABATUAN', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('8', 'CITY OF CAUAYAN', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('9', 'CITY OF ILAGAN', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('10', 'CITY OF SANTIAGO', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('11', 'CORDON', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('12', 'DELFIN ALBANO', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('13', 'DINAPIGGUE', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('14', 'DIVILACAN', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('15', 'ECHAGUE', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('16', 'GAMU', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('17', 'JONES', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('18', 'LUNA', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('19', 'MACONACON', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('20', 'MAlLIG', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('21', 'NAGUILIAN', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('22', 'PALANAN', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('23', 'QUEZON', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('24', 'QUIRINO', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('25', 'RAMON', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('26', 'REINA MERCEDES', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('27', 'ROXAS', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('28', 'SAN AGUSTIN', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('29', 'SAN GUILLERMO', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('30', 'SAN ISIDRO', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('31', 'SAN MANUEL', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('32', 'SAN MARIANO', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('33', 'SAN MATEO', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('34', 'SAN PABLO', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('35', 'SANTA MARIA', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('36', 'SANTO TOMAS', '12/03/2022', '12/03/2022');
+INSERT INTO `cities` (`id`, `name`, `created_at`, `updated_at`) VALUES ('37', 'TUMAUINI', '12/03/2022', '12/03/2022');
+
+
+#
+# TABLE STRUCTURE FOR: products
+#
+
+DROP TABLE IF EXISTS `products`;
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `amount` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`,`created_by`),
+  KEY `fk_products_users1_idx` (`created_by`),
+  CONSTRAINT `fk_products_users1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+INSERT INTO `products` (`id`, `name`, `description`, `amount`, `image`, `created_by`, `created_at`, `updated_at`) VALUES ('13', 'Electric Meter', 'Commerical Electric Meter', '1500', '1669476670productmeter.jpg', '1', '2022-11-26 15:31:10', '2022-11-26 15:31:10');
+
+
+#
+# TABLE STRUCTURE FOR: requirements
+#
+
+DROP TABLE IF EXISTS `requirements`;
+
+CREATE TABLE `requirements` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `application_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`,`application_id`),
+  KEY `fk_table1_applications1_idx` (`application_id`),
+  CONSTRAINT `fk_table1_applications1` FOREIGN KEY (`application_id`) REFERENCES `applications` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=latin1;
+
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('10', '129', '1669485169req315096912_1340631246765566_7018334007153313907_n.jpg', '2022-11-26 17:52:49', '2022-11-26 17:52:49');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('11', '129', '1669485169reqbanner_main21.jpg', '2022-11-26 17:52:49', '2022-11-26 17:52:49');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('12', '129', '1669485169reqlogo.jpg', '2022-11-26 17:52:49', '2022-11-26 17:52:49');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('13', '129', '1669485169reqlogo.png', '2022-11-26 17:52:49', '2022-11-26 17:52:49');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('14', '130', '1669485988req315096912_1340631246765566_7018334007153313907_n.jpg', '2022-11-26 18:06:28', '2022-11-26 18:06:28');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('15', '130', '1669485988reqbanner_main21.jpg', '2022-11-26 18:06:28', '2022-11-26 18:06:28');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('16', '130', '1669485988reqlogo.jpg', '2022-11-26 18:06:28', '2022-11-26 18:06:28');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('17', '130', '1669485988reqlogo.png', '2022-11-26 18:06:28', '2022-11-26 18:06:28');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('18', '131', '1669486134req315096912_1340631246765566_7018334007153313907_n.jpg', '2022-11-26 18:08:54', '2022-11-26 18:08:54');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('19', '131', '1669486134reqbanner_main21.jpg', '2022-11-26 18:08:54', '2022-11-26 18:08:54');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('20', '131', '1669486134reqlogo.jpg', '2022-11-26 18:08:54', '2022-11-26 18:08:54');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('21', '131', '1669486134reqlogo.png', '2022-11-26 18:08:54', '2022-11-26 18:08:54');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('40', '138', '1669487124reqlogo.jpg', '2022-11-26 18:25:24', '2022-11-26 18:25:24');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('41', '138', '1669487124reqlogo.png', '2022-11-26 18:25:24', '2022-11-26 18:25:24');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('45', '141', '1669511062reqlogo2.png', '2022-11-27 01:04:23', '2022-11-27 01:04:23');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('46', '142', '1669533765reqbanner_main21.jpg', '2022-11-27 07:22:45', '2022-11-27 07:22:45');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('47', '142', '1669533765reqlogo.jpg', '2022-11-27 07:22:45', '2022-11-27 07:22:45');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('48', '142', '1669533765reqlogo.png', '2022-11-27 07:22:45', '2022-11-27 07:22:45');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('49', '142', '1669533765reqlogo2.png', '2022-11-27 07:22:45', '2022-11-27 07:22:45');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('51', '144', '1669590190reqlogo.jpg', '2022-11-27 23:03:10', '2022-11-27 23:03:10');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('52', '144', '1669590190reqlogo.png', '2022-11-27 23:03:10', '2022-11-27 23:03:10');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('53', '144', '1669590191reqlogo2.png', '2022-11-27 23:03:11', '2022-11-27 23:03:11');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('54', '145', '1669590226req315096912_1340631246765566_7018334007153313907_n.jpg', '2022-11-27 23:03:46', '2022-11-27 23:03:46');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('55', '145', '1669590226reqbanner_main21.jpg', '2022-11-27 23:03:46', '2022-11-27 23:03:46');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('56', '146', '1669614641reqlogo.jpg', '2022-11-28 05:50:41', '2022-11-28 05:50:41');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('57', '147', '1669614780reqlogo.jpg', '2022-11-28 05:53:00', '2022-11-28 05:53:00');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('58', '148', '1669614875reqlogo.jpg', '2022-11-28 05:54:35', '2022-11-28 05:54:35');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('59', '149', '1669614896reqlogo.jpg', '2022-11-28 05:54:56', '2022-11-28 05:54:56');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('60', '150', '1669614921reqlogo.jpg', '2022-11-28 05:55:21', '2022-11-28 05:55:21');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('61', '151', '1669614930reqlogo.jpg', '2022-11-28 05:55:30', '2022-11-28 05:55:30');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('62', '152', '1669614948reqlogo.jpg', '2022-11-28 05:55:48', '2022-11-28 05:55:48');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('63', '153', '1669614960reqlogo.jpg', '2022-11-28 05:56:00', '2022-11-28 05:56:00');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('64', '154', '1669614969reqlogo.jpg', '2022-11-28 05:56:09', '2022-11-28 05:56:09');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('65', '155', '1669614982reqlogo.jpg', '2022-11-28 05:56:22', '2022-11-28 05:56:22');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('66', '156', '1669614991reqlogo.jpg', '2022-11-28 05:56:31', '2022-11-28 05:56:31');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('67', '157', '1669615009reqlogo.jpg', '2022-11-28 05:56:49', '2022-11-28 05:56:49');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('68', '158', '1669615024reqlogo.jpg', '2022-11-28 05:57:05', '2022-11-28 05:57:05');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('69', '159', '1669615072reqlogo.jpg', '2022-11-28 05:57:52', '2022-11-28 05:57:52');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('70', '160', '1669615150reqlogo.jpg', '2022-11-28 05:59:10', '2022-11-28 05:59:10');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('71', '161', '1669615202reqlogo.jpg', '2022-11-28 06:00:02', '2022-11-28 06:00:02');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('73', '163', '1669622099req315096912_1340631246765566_7018334007153313907_n.jpg', '2022-11-28 07:54:59', '2022-11-28 07:54:59');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('74', '163', '1669622099reqbanner_main21.jpg', '2022-11-28 07:54:59', '2022-11-28 07:54:59');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('75', '163', '1669622099reqlogo.jpg', '2022-11-28 07:54:59', '2022-11-28 07:54:59');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('76', '163', '1669622099reqlogo.png', '2022-11-28 07:54:59', '2022-11-28 07:54:59');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('77', '163', '1669622099reqlogo2.png', '2022-11-28 07:54:59', '2022-11-28 07:54:59');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('78', '163', '1669622099reqmeter.jpg', '2022-11-28 07:54:59', '2022-11-28 07:54:59');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('79', '163', '1669622099reqqrcode.jpg', '2022-11-28 07:55:00', '2022-11-28 07:55:00');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('80', '163', '1669622100requser.png', '2022-11-28 07:55:00', '2022-11-28 07:55:00');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('81', '164', '1669622395reqbanner_main21.jpg', '2022-11-28 07:59:55', '2022-11-28 07:59:55');
+INSERT INTO `requirements` (`id`, `application_id`, `name`, `created_at`, `updated_at`) VALUES ('92', '171', '1670153406reqHOTLINE.jpg', '2022-12-04 11:30:06', '2022-12-04 11:30:06');
+
+
+#
+# TABLE STRUCTURE FOR: transactions
+#
+
+DROP TABLE IF EXISTS `transactions`;
+
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `application_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `mode_of_payment` varchar(255) DEFAULT NULL,
+  `proof` varchar(255) DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`,`application_id`,`product_id`,`created_by`),
+  KEY `fk_transaction_applications1_idx` (`application_id`),
+  KEY `fk_transactions_users1_idx` (`created_by`),
+  KEY `fk_transactions_products1_idx` (`product_id`),
+  CONSTRAINT `fk_transaction_applications1` FOREIGN KEY (`application_id`) REFERENCES `applications` (`id`),
+  CONSTRAINT `fk_transactions_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  CONSTRAINT `fk_transactions_users1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('30', '131', '13', '1', NULL, '55', '2022-11-26 19:00:28', '2022-11-26 19:00:28');
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('31', '130', '13', '2', '1669489265prrof315096912_1340631246765566_7018334007153313907_n.jpg', '55', '2022-11-26 19:01:05', '2022-11-26 19:01:05');
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('32', '129', '13', '1', NULL, '55', '2022-11-26 19:04:53', '2022-11-26 19:04:53');
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('33', '131', '13', '1', NULL, '55', '2022-11-27 00:26:42', '2022-11-27 00:26:42');
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('34', '130', '13', '1', NULL, '55', '2022-11-27 00:27:47', '2022-11-27 00:27:47');
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('35', '130', '13', '1', NULL, '55', '2022-11-27 01:01:07', '2022-11-27 01:01:07');
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('36', '142', '13', '2', '1669534056prroflogo.jpg', '55', '2022-11-27 07:27:36', '2022-11-27 07:27:36');
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('37', '162', '13', '3', 'Rasd12322', '55', '2022-11-28 07:00:00', '2022-11-28 07:00:00');
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('38', '163', '13', '3', 'Dass123sdfg', '55', '2022-11-28 07:56:21', '2022-11-28 07:56:21');
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('39', '164', '13', '1', NULL, '55', '2022-11-28 08:01:00', '2022-11-28 08:01:00');
+INSERT INTO `transactions` (`id`, `application_id`, `product_id`, `mode_of_payment`, `proof`, `created_by`, `created_at`, `updated_at`) VALUES ('40', '171', '13', '3', 'Dass123sdfg', '57', '2022-12-04 11:30:56', '2022-12-04 11:30:56');
+
+
+#
+# TABLE STRUCTURE FOR: users
+#
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `blk` varchar(255) DEFAULT NULL,
+  `baranggay` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `user_level` varchar(255) DEFAULT '1',
+  `vkey` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `phone`, `email`, `blk`, `baranggay`, `city`, `password`, `user_level`, `vkey`, `status`, `created_at`, `updated_at`) VALUES ('1', 'WILARD', 'MATIAS', '09190790221', 'admin@gmail.com', NULL, NULL, NULL, '161ebd7d45089b3446ee4e0d86dbcf92', '0', '1', '1', NULL, '2022-11-13 17:13:08');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `phone`, `email`, `blk`, `baranggay`, `city`, `password`, `user_level`, `vkey`, `status`, `created_at`, `updated_at`) VALUES ('56', 'asdasd', 'asdasd', '091012121123123123', 'asdas@gmail.com', 'P6 A3 BLK22 LOT8ssds', 'NAGGASICANasd', 'CITY OF SANTIAGO', '499106a5ec781d334c8f071b5b36c2e7', '1', '8ead8e448f9105fc0ef61c861a397066', '0', '2022-12-02 10:58:17', '2022-12-02 10:58:17');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `phone`, `email`, `blk`, `baranggay`, `city`, `password`, `user_level`, `vkey`, `status`, `created_at`, `updated_at`) VALUES ('57', 'WILARD', 'MATIAS', '09190790221', 'lard059125@gmail.com', 'P6 A3 BLK22 LOT8', '96', '3', '499106a5ec781d334c8f071b5b36c2e7', '1', '853884429928ae4a66e85070db207c21', '1', '2022-12-04 09:42:53', '2022-12-04 09:42:53');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `phone`, `email`, `blk`, `baranggay`, `city`, `password`, `user_level`, `vkey`, `status`, `created_at`, `updated_at`) VALUES ('55', 'Eduardo', 'Agrons', '09129019291', 'lard0595@gmail.com', 'P4 G Silang ', 'Sta Maria', 'Cauayan', '499106a5ec781d334c8f071b5b36c2e7', '1', '2f4a117552caeb1b8044d63e94c99115', '1', '2022-11-15 13:01:54', '2022-11-15 13:08:32');
+
+

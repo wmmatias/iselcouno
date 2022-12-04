@@ -71,8 +71,6 @@ else{
                 </div>
             </div>
         </section>
-
-
         <!-- Call to action-->
  <section class="page-section bg-dark text-white" id="applicationForm">
             <div class="container px-4 px-lg-5 text-center">
@@ -114,19 +112,28 @@ else{
                             </div>
                             <!-- Phone number input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="phone" id="phone" value="<?php echo set_value('phone'); ?>" pattern="^[+]?[\d]+([\-][\d]+)*\d$" minlength="11" title="Must start with [09 / +63] and at least 11 digit number to 13 with area code" required/>
+                                <input class="form-control" name="phone" id="phone" value="<?php echo set_value('phone'); ?>" pattern="^[+]?[\d]+([\-][\d]+)*\d$" maxlength="11" title="Must start with [09] and at least 11 digit number" required/>
                                 <label for="phone">Phone number</label>
                                 <?php echo form_error('phone') ?>
                             </div>
                             <hr class="divider" />
                             <p class="text-muted mb-5 text-center">Complete Address</p>
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="city" value="<?php echo set_value('city'); ?>" id="city" type="text" required/>
+                                <!-- <input class="form-control" name="city" value="<?php echo set_value('city'); ?>" id="city" type="text" required/> -->
+                                <select name="city" id="city" class="form-control" required>
+                                    <option value="">-- Select City/Municipality --</option>
+<?php                               foreach($city as $data){
+?>                                    <option value="<?=$data['id']?>"><?=$data['name']?></option>
+<?php                               }
+?>                                </select>
                                 <label for="city">City</label>
                                 <?php echo form_error('city') ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" name="baranggay" value="<?php echo set_value('baranggay'); ?>" id="baranggay" type="text" required/>
+                                <!-- <input class="form-control" name="baranggay" value="<?php echo set_value('baranggay'); ?>" id="baranggay" type="text" required/> -->
+                                <select name="baranggay" id="baranggay" class="form-control" required>
+                                    <option value="">-- Select Barangay --</option>
+                                </select>
                                 <label for="baranggay">Baranggay</label>
                                 <?php echo form_error('baranggay') ?>
                             </div>
@@ -300,7 +307,8 @@ else{
                     </div>
                     <div class="modal-body">
                     <?php $details = $this->session->userdata('details'); 
-                    // var_dump($details);
+                    $cityshow = $this->session->userdata('cityshow');
+                    $brgyshow = $this->session->userdata('brgyshow');
                     ?>
                         <form id="add_product_app" action="/clients/add_application" method="post"  enctype="multipart/form-data">
                             <div class="details" id="body-apply">
@@ -329,12 +337,23 @@ else{
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="city">City/Municipality</label>
-                                                    <input type="text" name="city" class="form-control" id="city" placeholder="City / Municipality" value="<?=$details[0]['city']?>" required>
+                                                    <select name="city" id="city" class="form-control">
+                                                        <option value="">-- Select City/Municipality --</option>
+                    <?php                               foreach($city as $data){
+                    ?>                                    <option value="<?=$data['id']?>"><?=$data['name']?></option>
+                    <?php                               }
+                    ?>                                </select>
+                                                    <input type="text" class="form-control" id="cityshow" value="<?=$cityshow['name']?>">
+                                                    <input type="hidden" name="city" class="form-control" id="cityinput" placeholder="City / Municipality" value="<?=$details[0]['city']?>">
                                                     <?php echo form_error('confirm') ?>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="baranggay">Baranggay</label>
-                                                    <input type="text" name="baranggay" class="form-control" placeholder="Baranggay" value="<?=$details[0]['baranggay']?>" id="baranggay" required>
+                                                    <select name="baranggay" id="baranggay" class="form-control">
+                                                        <option value="">-- Select Barangay --</option>
+                                                    </select>
+                                                    <input type="text" class="form-control" id="brgyshow" value="<?=$brgyshow['name']?>">
+                                                    <input type="hidden" name="baranggay" class="form-control" placeholder="Baranggay" value="<?=$details[0]['baranggay']?>" id="baranggayinput">
                                                     <?php echo form_error('new') ?>
                                                 </div>
                                                 <div class="form-group">

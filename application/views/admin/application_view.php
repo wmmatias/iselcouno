@@ -27,6 +27,7 @@ $new_step = $application_details['step'] + 1;
                     <div class="card-body">
                         <div class="form-row">
                         <div class="col-md-4 mb-3">
+                            <!-- <?php var_dump($application_details) ?> -->
                                 <h3 class="text-dark">Status:
 <?php                               if($application_details['status'] === '0'){
 ?>                                      New Pending Payment
@@ -67,11 +68,11 @@ $new_step = $application_details['step'] + 1;
                             </div>
                             <div class="col-md mb-3">
                                 <label for="lastname">Baranggay</label>
-                                <input type="text" class="form-control" name="lastname"  value="<?=$application_details['baranggay']?>" readonly>
+                                <input type="text" class="form-control" name="lastname"  value="<?=$brgy['name']?>" readonly>
                             </div>
                             <div class="col-md mb-3">
                                 <label for="lastname">City/Municipality</label>
-                                <input type="text" class="form-control" name="lastname"  value="<?=$application_details['city']?>" readonly>
+                                <input type="text" class="form-control" name="lastname"  value="<?=$city['name']?>" readonly>
                             </div>
                         </div>
                         <div class="form-row">

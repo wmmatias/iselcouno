@@ -258,7 +258,7 @@ class Dashboards extends CI_Controller {
             $this->load->view('admin/template/header');
             $this->load->view('admin/template/sidebar');
             $this->load->view('admin/template/topnavbar');
-            $this->load->view('admin/reports', $data);
+            $this->load->view('admin/reports');
             $this->load->view('admin/template/footer', $chart);
         }
     }
@@ -334,8 +334,9 @@ class Dashboards extends CI_Controller {
         else{
             $res = $this->dashboard->fetch_application_id($id);
             $req = $this->dashboard->fetch_req($id);
-            // var_dump($id);
-            $data = array('application_details' => $res, 'requirements'=>$req);
+            $city = $this->user->get_city($res['city']);
+            $brgy = $this->user->get_brgy($res['baranggay']);
+            $data = array('application_details' => $res, 'requirements'=>$req, 'city'=>$city, 'brgy'=>$brgy);
             $this->load->view('admin/template/header');
             $this->load->view('admin/template/sidebar');
             $this->load->view('admin/template/topnavbar');

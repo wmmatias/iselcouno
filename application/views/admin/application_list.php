@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <thead>
                                         <tr>
                                             <th>Full Name</th>
-                                            <th>Address</th>
+                                            <!-- <th>Address</th> -->
                                             <th>Status</th>
                                             <th>Created at</th>
                                             <th>Action</th>
@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 $create = date('m-d-Y', strtotime($data['created_at']));
     ?>                                <tr>
                                         <td><?= $data['first_name'].' '.$data['last_name']?></td>
-                                        <td><?= $data['blk'].' '.$data['baranggay'].' '.$data['city']?></td>
+                                        <!-- <td><?= $data['blk'].' '.$data['baranggay'].' '.$data['city']?></td> -->
                                         <td>
 <?php                                       if($data['status'] === '0'  || $data['status'] === '0.1'){
 ?>                                             New Pending Payment

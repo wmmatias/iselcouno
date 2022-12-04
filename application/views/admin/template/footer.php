@@ -39,7 +39,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 
     <script>
-      
       /*======== 3. Daily CHART ========*/
       var ctx = document.getElementById("linechart");
       if (ctx !== null) {

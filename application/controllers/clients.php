@@ -40,7 +40,8 @@ class Clients extends CI_Controller {
             $id = $this->session->userdata('user_id');
             $application = $this->client->get_application_details($id);
             $product = $this->dashboard->fetch_all_product();
-            $data = array('app'=>$application, 'product'=>$product);
+            $city = $this->dashboard->fetch_city();
+            $data = array('app'=>$application, 'product'=>$product, 'city'=>$city);
             $this->load->view('templates/header', $data);
             $this->load->view('client/index', $data);
             $this->load->view('templates/footer');
@@ -48,6 +49,16 @@ class Clients extends CI_Controller {
         else{
             redirect('dashboards');
         }
+    }
+
+    public function barangay(){
+        $city_id = $this->input->get('city_id');
+        $brgy = $this->dashboard->fetch_barangay($city_id);
+        $html = '<option value="">-- Select Barangay --</option>';
+        foreach($brgy as $data){
+            $html .= '<option value="'.$data['id'].'">'.$data['name'].'</option>';
+        }
+        echo $html;
     }
 
     public function send() 
@@ -122,15 +133,11 @@ class Clients extends CI_Controller {
         if($result!= 'success')
         {
             $this->session->set_flashdata('form_error', 'Something went wrong!' . ($result != 'success' ? '': ''));
-            $this->load->view('templates/header');
-            $this->load->view('client/index');
-            $this->load->view('templates/footer');
+            $this->index();
         }
         elseif(empty($_FILES['files']['name'])){
             $this->session->set_flashdata('form_error', 'Something went wrong! requirement must have a value please secure your requirements');
-            $this->load->view('templates/header');
-            $this->load->view('client/index');
-            $this->load->view('templates/footer');
+            $this->index();
         }
         else
         {
