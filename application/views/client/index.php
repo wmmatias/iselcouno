@@ -47,7 +47,7 @@ else{
                         </div>
 <?php
 }
-?>                        <h1 class="text-white font-weight-bold">A dynamic distribution Utility</h1>
+?>                        <h2 class="text-white font-weight-bold">ONLINE REGISTRATION OF ELECTRIC METER FOR ISABELA ELECTRIC COOPERATIVE INC.</h1>
                         <hr class="divider" />
                     </div>
                     <div class="col-lg-8 align-self-baseline">

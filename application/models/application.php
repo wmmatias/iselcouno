@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+date_default_timezone_set('Asia/Manila');
 class Application extends CI_Model {
 
     public function validate_application() 
@@ -183,12 +183,12 @@ class Application extends CI_Model {
     }
 
     public function daily_chart(){ 
-        $status = '1';
+        $status = '0.1';
         return $this->db->query("SELECT applications.product_id, sum(products.amount) AS total_amount, applications.status, applications.created_at
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEAR(applications.created_at) = YEAR(NOW())
+        WHERE YEAR(applications.created_at) = YEAR(NOW()) AND applications.status = ?
                 AND MONTH(applications.created_at) = MONTH(NOW()) 
                 AND DAY(applications.created_at) = DAY(NOW())
                 GROUP BY applications.status", array(
@@ -197,13 +197,13 @@ class Application extends CI_Model {
     }
 
     public function daily_print(){ 
-        $status = '1';
+        $status = '0.1';
         return $this->db->query("SELECT applications.first_name, applications.last_name, products.name, applications.qty, products.amount * applications.qty AS total_amount, applications.status, applications.created_at
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
         WHERE YEAR(applications.created_at) = YEAR(NOW())
-                AND MONTH(applications.created_at) = MONTH(NOW()) 
+                AND MONTH(applications.created_at) = MONTH(NOW()) AND applications.status = ?
                 AND DAY(applications.created_at) = DAY(NOW())", 
         array(
             $this->security->xss_clean($status)
@@ -211,12 +211,12 @@ class Application extends CI_Model {
     }
 
     public function daily_total(){ 
-        $status = '1';
+        $status = '0.1';
         return $this->db->query("SELECT sum(products.amount * applications.qty) AS total_sales
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEAR(applications.created_at) = YEAR(NOW())
+        WHERE YEAR(applications.created_at) = YEAR(NOW()) AND applications.status = ?
                 AND MONTH(applications.created_at) = MONTH(NOW()) 
                 AND DAY(applications.created_at) = DAY(NOW())", 
         array(
@@ -225,12 +225,12 @@ class Application extends CI_Model {
     }
 
     public function ydaily_chart(){ 
-        $status = '1';
+        $status = '0.1';
         return $this->db->query("SELECT applications.product_id, sum(products.amount) AS total_amount, applications.status, applications.created_at
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEAR(applications.created_at) = YEAR(NOW())
+        WHERE YEAR(applications.created_at) = YEAR(NOW()) AND applications.status = ?
                 AND MONTH(applications.created_at) = MONTH(NOW()) 
                 AND DAY(applications.created_at) = DAY(NOW() - INTERVAL 1 DAY)
                 GROUP BY applications.status;", 
@@ -240,12 +240,12 @@ class Application extends CI_Model {
     }
 
     public function weekly_chart(){ 
-        $status = '1';
+        $status = '0.1';
         return $this->db->query("SELECT applications.product_id, sum(products.amount) AS total_amount, applications.status, applications.created_at
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW())
+        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW()) AND applications.status = ?
         GROUP BY CAST(applications.created_at AS DATE)
         ORDER BY applications.created_at ASC", 
         array(
@@ -253,36 +253,36 @@ class Application extends CI_Model {
         ))->result_array();
     }
     public function weekly_print(){ 
-        $status = '1';
+        $status = '0.1';
         return $this->db->query("SELECT applications.first_name, applications.last_name, products.name, applications.qty, products.amount * applications.qty AS total_amount, applications.status, applications.created_at
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW())", 
+        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW()) AND applications.status = ?", 
         array(
             $this->security->xss_clean($status)
         ))->result_array();
     }
 
     public function weekly_total(){ 
-        $status = '1';
+        $status = '0.1';
         return $this->db->query("SELECT sum(products.amount * applications.qty) AS total_sales
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW())", 
+        WHERE YEARWEEK(applications.created_at) = YEARWEEK(NOW()) AND applications.status = ?", 
         array(
             $this->security->xss_clean($status)
         ))->result_array();
     }
     
     public function monthly_chart(){ 
-        $status = '1';
+        $status = '0.1';
         return $this->db->query("SELECT applications.product_id, sum(products.amount) AS total_amount, applications.status, applications.created_at
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEAR(applications.created_at) = YEAR(NOW()) AND MONTH(applications.created_at)=MONTH(NOW())
+        WHERE YEAR(applications.created_at) = YEAR(NOW()) AND MONTH(applications.created_at)=MONTH(NOW()) AND applications.status = ?
         GROUP BY CAST(applications.created_at AS DATE)
         ORDER BY applications.created_at ASC", array(
             $this->security->xss_clean($status)
@@ -291,12 +291,12 @@ class Application extends CI_Model {
 
     
     public function monthly_print(){ 
-        $status = '1';
+        $status = '0.1';
         return $this->db->query("SELECT applications.first_name, applications.last_name, products.name, applications.qty, products.amount * applications.qty AS total_amount, applications.status, applications.created_at
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEAR(applications.created_at) = YEAR(NOW()) 
+        WHERE YEAR(applications.created_at) = YEAR(NOW()) AND applications.status = ?
         AND MONTH(applications.created_at)=MONTH(NOW())", 
         array(
             $this->security->xss_clean($status)
@@ -304,12 +304,12 @@ class Application extends CI_Model {
     }
 
     public function monthly_total(){ 
-        $status = '1';
+        $status = '0.1';
         return $this->db->query("SELECT sum(products.amount * applications.qty) AS total_sales
         FROM iselcouno.applications
         LEFT JOIN iselcouno.products
         ON applications.product_id = products.id
-        WHERE YEAR(applications.created_at) = YEAR(NOW()) 
+        WHERE YEAR(applications.created_at) = YEAR(NOW()) AND applications.status = ?
         AND MONTH(applications.created_at)=MONTH(NOW())", 
         array(
             $this->security->xss_clean($status)

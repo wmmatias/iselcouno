@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+date_default_timezone_set('Asia/Manila');
 class Dashboard extends CI_Model {
 
     public function get_info($id)
@@ -29,10 +29,19 @@ class Dashboard extends CI_Model {
 
     public function fetch_all_application()
     {
-        $query = "SELECT applications.id, users.first_name, users.last_name, applications.blk, applications.baranggay, applications.city, applications.status, applications.step, applications.created_at
+        // $query = "SELECT applications.id, users.first_name, users.last_name, applications.blk, applications.baranggay, applications.city, applications.status, applications.step, applications.created_at
+        // FROM iselcouno.applications
+        // LEFT JOIN iselcouno.users
+        // ON applications.created_by = users.id
+        // ORDER BY applications.created_at DESC";
+        // return $this->db->query($query)->result_array();
+
+        $query = "SELECT applications.id, applications.first_name, applications.last_name, applications.blk, barangays.name AS brgy, cities.name AS city, applications.status, applications.step, applications.created_at
         FROM iselcouno.applications
-        LEFT JOIN iselcouno.users
-        ON applications.created_by = users.id
+        LEFT JOIN iselcouno.cities
+        ON applications.city = cities.id
+        LEFT JOIN iselcouno.barangays
+        ON applications.baranggay = barangays.id
         ORDER BY applications.created_at DESC";
         return $this->db->query($query)->result_array();
     }
@@ -100,10 +109,12 @@ class Dashboard extends CI_Model {
 
     public function select_new(){
         $status = '0.1';
-        $query = "SELECT applications.id, users.first_name, users.last_name, applications.blk, applications.baranggay, applications.city, applications.status, applications.step, applications.created_at
+        $query = "SELECT applications.id, applications.first_name, applications.last_name, applications.blk, barangays.name AS brgy, cities.name AS city, applications.status, applications.step, applications.created_at
         FROM iselcouno.applications
-        LEFT JOIN iselcouno.users
-        ON applications.created_by = users.id
+        LEFT JOIN iselcouno.cities
+        ON applications.city = cities.id
+        LEFT JOIN iselcouno.barangays
+        ON applications.baranggay = barangays.id
         WHERE applications.status = ?
         ORDER BY applications.created_at DESC";
         return $this->db->query($query, $this->security->xss_clean($status))->result_array();
